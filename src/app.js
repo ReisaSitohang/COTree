@@ -6,7 +6,7 @@ const bodyParser =  require('body-parser')
 const Sequelize  =  require('sequelize')
 const session    =  require('express-session')
 const bcrypt     =  require('bcrypt-nodejs')
-const nodesass   = 
+const nodesass   = 	require('node-sass')
 const db         =  new Sequelize('cotree', process.env.POSTGRES_USER, process.env.POSTGRES_PASSWORD,{
 						host: 'localhost',
 						dialect: 'postgres'
