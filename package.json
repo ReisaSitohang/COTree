@@ -1,0 +1,19 @@
+{
+  "name": "cotree",
+  "version": "0.0.1",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Reisa, Manon, Daniel",
+  "license": "MIT",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "express-session": "^1.14.2",
+    "node-sass": "^3.13.0",
+    "sequelize": "^3.27.0"
+  }
+}
