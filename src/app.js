@@ -1,6 +1,7 @@
 'use strict'
 //Import modules
 const express    =  require( 'express' )
+const fs 		 = 	require( 'fs' )
 const app        =  express( )
 const bodyParser =  require('body-parser')
 const Sequelize  =  require('sequelize')
@@ -17,6 +18,19 @@ app.set('view engine', 'pug')
 
 //Use static folder
 app.use (express.static(__dirname + '/static'))
+
+nodesass.render({
+	file: __dirname + '/static/sass/materialize.scss',
+	outFile: __dirname + '/static/css/materialize.css'
+}, (error, result) => {
+	if(!error) {
+		fs.writeFile(__dirname + '/static/css/materialize.css', result.css.toString('utf8'), (err) =>{
+			if(!err){
+				console.log("file written to disk")
+			}
+		})
+	}
+})
 
 //Setting Routes
 //let loginlogoutRouter = require( __dirname + '/routes/login' )
