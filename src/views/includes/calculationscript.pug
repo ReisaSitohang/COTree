@@ -1,0 +1,26 @@
+script.
+	$( document ).ready(()=> {
+	//This reads the JSON info from the API
+		function readJSONapi(){
+			$.getJSON("http://www.carqueryapi.com/api/0.3/?callback=?", {cmd:"getMakes", year:$("#car-years :selected").text()}, function(data) {
+			    let makes = data.Makes;
+			    for (let i = 0; i < makes.length; i++){
+			   		console.log(makes[i].make_display)
+			   		let carMakes = makes[i].make_display
+					$("#car-makes").append("<option>"+carMakes+"</option")
+			   	}
+		    })
+		}
+	let carYears = $("#car-years").val()
+	//Get the car makes of the selected year on click or keyup
+		$("#car-years").click( function() {
+			if( !isNaN(carYears) ){
+				readJSONapi()
+			}
+		})
+		$("#car-years").keyup( function() {
+			if( !isNaN(carYears) ){
+				readJSONapi()
+			}
+		})	
+	})	
