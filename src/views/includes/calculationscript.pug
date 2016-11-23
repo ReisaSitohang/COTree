@@ -38,7 +38,6 @@ script.
 				$("#car-models").empty()
 			    let models = data.Models
 			    for (let i = 0; i < models.length; i++){
-			   		console.log(models[i].model_name)
 			   		let carModels = models[i].model_name
 					$("#car-models").append("<option>"+carModels+"</option")
 			   	}
@@ -47,18 +46,49 @@ script.
 	//Get the car models of the selected make on click or keyup
 		$("#car-makes").click( function(e) {
 			e.preventDefault()
-			if( carYears!=="---") {
-				console.log($("#car-makes").val())
+			if( $("#car-makes").val()!=="---") {
 				readCarModels()
 			}
 		})
 		$("#car-makes").keyup( function(e) {
 			e.preventDefault()
-			if( carYears!=="---" ){
-				console.log($("#car-makes").val())
+			if( $("#car-makes").val()!=="---" ){
 				readCarModels()
 			}
 		})	
+
+			//__________Get the specific trim of car model	
+
+		//This reads the JSON info from the API
+			function readCarTrims(){
+				console.log( "readable?:"+$("#car-makes").val() )
+				$.getJSON("http://www.carqueryapi.com/api/0.3/?callback=?&cmd=getTrims&make="+$("#car-makes").val()+"&model="+$("#car-models").val()+"&year="+$("#car-models").val()+"", function(data) {
+					$("#car-trims").empty()
+				    let trims = data.Trims
+				    console.log(data.Trims)
+				  //-   for (let i = 0; i < trims.length; i++){
+				  //-  		console.log(trims[i].model_id)
+				  //-  		let modelId = trims[i].model_id
+						//- $("#car-trims").append("<option>"+modelId+"</option")
+				  //-  	}
+			    })
+			}
+
+		//Get the car trims of the selected model on click or keyup
+			$("#car-models").click( function(e) {
+				e.preventDefault()
+				if( $("#car-models").val()!=="---") {
+					console.log($("#car-models").val())
+					readCarTrims()
+				}
+			})
+			$("#car-models").keyup( function(e) {
+				e.preventDefault()
+				if( $("#car-models").val()!=="---" ){
+					console.log($("#car-models").val())
+					readCarTrims()
+				}
+			})
 
 
 
