@@ -1,7 +1,15 @@
 .brand-logo{
 	padding-left: 10px !important;
 	}
-	
+
 #navlogo{
 	max-height:65px;
+}
+body {
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
+}
+main {
+	flex: 1 0 auto;
 }
