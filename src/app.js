@@ -32,6 +32,19 @@ nodesass.render({
 	}
 })
 
+nodesass.render({
+	file: __dirname + '/static/sass/style.scss',
+	outFile: __dirname + '/static/css/style.css'
+}, (error, result) => {
+	if(!error) {
+		fs.writeFile(__dirname + '/static/css/style.css', result.css.toString('utf8'), (err) =>{
+			if(!err){
+				console.log("style written to disk")
+			}
+		})
+	}
+})
+
 //Setting Routes
 //let loginlogoutRouter = require( __dirname + '/routes/login' )
 //let registerRouter 	  = require( __dirname + '/routes/register' )

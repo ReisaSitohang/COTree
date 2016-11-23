@@ -7,7 +7,7 @@ router.get( '/home', (req, res) => {
 
 	
 
-	res.send("welcome home!")
+	res.render('home')
 })
 
 module.exports = router
