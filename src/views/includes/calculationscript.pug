@@ -1,11 +1,15 @@
 script.
 	$( document ).ready(()=> {
+
+
+	//__________Selecting Car year resulting in Car Make options
+
 	//This reads the JSON info from the API
-		function readJSONapi(){
-			$.getJSON("http://www.carqueryapi.com/api/0.3/?callback=?", {cmd:"getMakes", year:$("#car-years :selected").text()}, function(data) {
+		function readCarMakes(){
+			$.getJSON("http://www.carqueryapi.com/api/0.3/?callback=?", {cmd:"getMakes", year:$("#car-years").val()}, function(data) {
+				$("#car-makes").empty()
 			    let makes = data.Makes;
 			    for (let i = 0; i < makes.length; i++){
-			   		console.log(makes[i].make_display)
 			   		let carMakes = makes[i].make_display
 					$("#car-makes").append("<option>"+carMakes+"</option")
 			   	}
@@ -13,14 +17,50 @@ script.
 		}
 	let carYears = $("#car-years").val()
 	//Get the car makes of the selected year on click or keyup
-		$("#car-years").click( function() {
+		$("#car-years").click( function(e) {
+			e.preventDefault()
 			if( !isNaN(carYears) ){
-				readJSONapi()
+				readCarMakes()
 			}
 		})
-		$("#car-years").keyup( function() {
+		$("#car-years").keyup( function(e) {
+			e.preventDefault()
 			if( !isNaN(carYears) ){
-				readJSONapi()
+				readCarMakes()
 			}
 		})	
+
+	//__________Selecting Car Make resulting in Car model options	
+
+	//This reads the JSON info from the API
+		function readCarModels(){
+			$.getJSON("http://www.carqueryapi.com/api/0.3/?callback=?", { cmd:"getModels", make:$("#car-makes").val() }, function(data) {
+				$("#car-models").empty()
+			    let models = data.Models
+			    for (let i = 0; i < models.length; i++){
+			   		console.log(models[i].model_name)
+			   		let carModels = models[i].model_name
+					$("#car-models").append("<option>"+carModels+"</option")
+			   	}
+		    })
+		}
+	//Get the car models of the selected make on click or keyup
+		$("#car-makes").click( function(e) {
+			e.preventDefault()
+			if( carYears!=="---") {
+				console.log($("#car-makes").val())
+				readCarModels()
+			}
+		})
+		$("#car-makes").keyup( function(e) {
+			e.preventDefault()
+			if( carYears!=="---" ){
+				console.log($("#car-makes").val())
+				readCarModels()
+			}
+		})	
+
+
+
+
 	})	
