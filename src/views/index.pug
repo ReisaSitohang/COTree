@@ -1,0 +1,36 @@
+html 
+	head
+		// - Style Sheets
+		link(href='http://fonts.googleapis.com/icon?family=Material+Icons', rel='stylesheet')
+		link(type='text/css', rel='stylesheet', href='css/materialize.css', media='screen,projection')
+		// - Scripts
+		//- script(type='text/javascript', src='js/facebookapi.js')
+		// - Meta
+		meta(name='viewport', content='width=device-width, initial-scale=1.0')
+	body
+		// - Navigation
+		nav
+			.nav-wrapper
+				a.brand-logo(href='#') COTree
+				ul#nav-mobile.right.hide-on-med-and-down
+					li 
+						a(href='register') Sign-Up
+					li 
+						a(href='#') Menu 3
+		// - Login Form
+		h2#error-message= message
+		div#login-form
+			.row
+				form.col.s12(action='/login' method='post')
+					.row 
+						.input-field-col.s12
+							input#email(type='email' name='email' autocomplete='off' required)
+							label(for='email') E-mail
+					.row
+						.input-field-col.s12
+							input#password(type='password' name='password' autocomplete='off' required secret)
+							label(for='password' ) Password
+					.row
+						button.btn.waves-effect.waves-light(type='submit')
+							| Log-In
+							i.material-icons.right send
