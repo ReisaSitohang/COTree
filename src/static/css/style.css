@@ -7,7 +7,32 @@
 body {
   display: flex;
   min-height: 100vh;
-  flex-direction: column; }
+  flex-direction: column;
+  position: relative; }
 
 main {
-  flex: 1 0 auto; }
+  flex: 1 0 auto;
+  position: relative; }
+
+#forest {
+  position: absolute;
+  bottom: 0; }
+
+.treecontainer {
+  position: relative;
+  height: 100px;
+  width: 84px; }
+
+.tree {
+  position: absolute;
+  bottom: 0;
+  background-color: green;
+  height: 50px;
+  width: 82px; }
+  .tree img {
+    height: 100px;
+    position: absolute;
+    bottom: 0; }
+
+footer {
+  position: relative; }
