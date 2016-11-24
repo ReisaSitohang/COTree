@@ -51,17 +51,17 @@ script.
          carquery.initSearchInterface(searchArgs);
 
          //If creating a search interface, set onclick event for the search button.  Make sure the ID used matches your search button ID.
-         $('#cq-search-btn').click( function(){ 
-             console.log("clickedbutton")
-            //Get Car Model JSON for the selected make
-            $.getJSON("http://www.carqueryapi.com/api/0.3/?callback=?", {cmd:"getTrims", make:$("#car-makes").val(), year:$("#car-years").val(), model:$("#car-models").val(), full_results:0}, function(data) {
+        //-  $('#cq-search-btn').click( function(){ 
+        //-      console.log("clickedbutton")
+        //-     //Get Car Model JSON for the selected make
+        //-     $.getJSON("http://www.carqueryapi.com/api/0.3/?callback=?", {cmd:"getTrims", make:$("#car-makes").val(), year:$("#car-years").val(), model:$("#car-models").val(), full_results:0}, function(data) {
      
-                            var trims = data.Trims;
-                        for (var i = 0; i < trims.length; i++)
-                        {
-                            var model_id = trims[i].model_id
-                            console.log(model_id)
-                        }
-            })
-        })
+        //-                     var trims = data.Trims;
+        //-                 for (var i = 0; i < trims.length; i++)
+        //-                 {
+        //-                     var model_id = trims[i].model_id
+        //-                     console.log(model_id)
+        //-                 }
+        //-     })
+        //- })
     })

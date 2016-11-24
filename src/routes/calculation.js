@@ -12,7 +12,7 @@ const router     =  express.Router(  )
 
 //_________routes
 router.get('/calculation', function (req, res) {
-		res.render('calculation')
+		res.render('calculationrdw')
 });
 
 

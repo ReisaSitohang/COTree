@@ -1,0 +1,68 @@
+script.
+	$( document ).ready( ()=> {
+	//Calculation Info (from emmisiefactoren kg co2, per liter) (tree info from adopt a tree in nepal)
+	let kgC02perboom  = 1000/3
+	let prijsperBoom  = 2
+	let BenzineCo2    = 2.740
+	let DieselCo2     = 3.230
+	//__________Getting info trough licence plate number
+
+	//This reads the JSON info from the API
+		function readcarInfo(km){
+			let checkbox = 0
+			$.getJSON("https://opendata.rdw.nl/resource/8ys7-d773.json", function(data) {
+			    for (let i = 0; i < data.length; i++){
+			    	if( data[i].kenteken === $("#Kenteken").val() ){
+			    		checkbox = 1
+			    		let brandstofsoort = data[i].brandstof_omschrijving
+			    		let brandstofperkm = data[i].brandstofverbruik_gecombineerd/100
+			    		if ( brandstofsoort == "Benzine" ){
+				    			LitersBrandstof = km*brandstofperkm
+				    			Co2Vervuiling = LitersBrandstof*BenzineCo2
+				    			Co2inBomen = Co2Vervuiling/kgC02perboom
+				    			Donatie = Co2inBomen*prijsperBoom
+				    			$("#donationAmount").empty()
+				    			$("#donationAmount").append("Hoi benzine verbruiker, doneer nu "+parseFloat(Donatie).toFixed(2)+" Dankjewel")
+			    			}
+		    			if ( brandstofsoort == "Diesel" ){
+				    			LitersBrandstof = km*brandstofperkm
+				    			Co2Vervuiling = LitersBrandstof*DieselCo2
+				    			Co2inBomen = Co2Vervuiling/kgC02perboom
+				    			Donatie = Co2inBomen*prijsperBoom
+				    			$("#donationAmount").empty()
+				    			$("#donationAmount").append("Hoi diesel verbruiker, doneer nu "+parseFloat(Donatie).toFixed(2)+" Dankjewel")
+			    			}
+
+			    	}
+			   	}
+		    })
+		    .then( () =>{
+		    	if(checkbox == 0){
+		    		$("#donationAmount").empty()
+		    		$("#donationAmount").append("Sorry, can't find your licence plate nr: "+$("#Kenteken").val()+"<br></br> Please look through car types.")
+		    	}
+		    })
+		}
+	//callback this function to submit the info and get the donation amount
+		function submitInfo () {
+			if( $("#Kenteken").val().length == 6  &&  $("#Kilometers").val() ){
+				readcarInfo( $("#Kilometers").val() )
+			}		
+		}
+	//Get donation info after clicking the button or pressing enter
+		$("#searchKenteken").click( function() {
+			submitInfo()
+		})
+		$("#Kenteken").keypress(function(e) {
+		    if(e.which == 13) {
+				submitInfo()
+		    }
+		})
+		$("#Kilometers").keypress(function(e) {
+		    if(e.which == 13) {
+		        submitInfo()
+		    }
+		})
+
+
+	})	
