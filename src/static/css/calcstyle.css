@@ -1,0 +1,8 @@
+div.calculationArea {
+	border: solid;
+	border-color: lightgreen;
+	border-radius: 30px 30px 30px 30px;
+	max-width: 30%;
+	padding: 20px;
+	margin-left: 50px;
+}

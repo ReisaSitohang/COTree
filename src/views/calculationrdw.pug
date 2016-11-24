@@ -4,17 +4,20 @@ html
 		include includes/head.pug
 		include includes/calculationscriptrdw.pug				
 	body
-		h1 Calculate your ride
-		h2 coTree badieboem
-	form
-		ul 
-		p Fill in your vehicle registration number
-		input#Kenteken(type='text', value="6KVH13")
-		br
-		input#Kilometers(type='number', placeholder="amount of kilometers")
-		br
-		input#searchKenteken(type='button', value="Calc")
-	div#donationAmount
+		include includes/navbar.pug
+		main
+			h2 Calculate your ride
+			div.calculationArea
+				form
+					ul 
+					p Fill in your licence plate number
+					input#Kenteken(type='text', value="6KVH13")
+					br
+					input#Kilometers(type='number', placeholder="amount of kilometers")
+					br
+					input#searchKenteken(type='button', value="Calc")
+				div#donationAmount
+	include includes/footer.pug
 
 
 
