@@ -11,14 +11,13 @@ body {
   position: relative; }
 
 main {
-  flex: 1 0 auto;
-  position: relative; }
+  flex: 1 0 auto; }
 
 #forest {
-  position: absolute;
+  position: relative;
   bottom: 0; }
 
-.treecontainer {
+.treecontainer, .remainderTreecontainer {
   position: relative;
   display: inline-block;
   height: 100px;

@@ -43,6 +43,9 @@ nodesass.render({
 			}
 		})
 	}
+	else if (error) {
+			throw error
+		}
 })
 
 //Setting Routes

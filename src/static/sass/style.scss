@@ -13,10 +13,9 @@ body {
 }
 main {
 	flex: 1 0 auto;
-	position: relative;
 }
 #forest {
-	position: absolute;
+	position: relative;
 	bottom: 0;
 }
 .treecontainer {
@@ -24,6 +23,9 @@ main {
 	display: inline-block;
 	height: 100px;
 	width: 84px;
+}
+.remainderTreecontainer{
+	@extend .treecontainer
 }
 .tree {
 	position: relative;

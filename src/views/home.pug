@@ -4,11 +4,10 @@ html
 		link(type="text/css" rel="stylesheet" href="/css/style.css")
 		script(type="text/javascript" src="/jquery-3.1.1.min.js")
 		script(type="text/javascript" src="/js/bin/materialize.min.js")
-	body
-		nav
+	nav
 			div.nav-wrapper
 				a(href="#" class="brand-logo")
-					img#navlogo(src="/images/cotree.png")
+					img#navlogo(class="responsive-img" src="/images/cotree.png")
 				ul.nav-mobile(class="right hide-on-med-and-down")
 					li
 						a(href="sass.html") Sass
@@ -16,32 +15,39 @@ html
 						a(href="badges.html") Components
 					li
 						a(href="collapsible.html") JavaScript
+	body
 		main 
-			div.container helloooo #{data.remainder}
-				div#forest 
-					h3 omg them trees!
-					-	for (var x=1; x < data.fulltree; x++)
-							div.treecontainer
-								div.tree
-									div
-										img(src='/images/tree2.png')
-					div.treecontainer
-						div.remainderTree
-							div
-							img(src='/images/tree2.png')
-
-		footer.page-footer
-			div.container
+			div.container hellooo
 				div.row
-					div.col-16-s12
-						h5.white-text Footer content
-						p.grey-text.text-lighten-4 You can use rows and colums here to organize your footer content.
-			div.footer-copyright
-				div.container  © 2016 Copyright COtree
+					div#forest 
+						h3 omg them trees!
+						-	for (var x=1; x < data.fulltree; x++)
+								div.treecontainer
+									div.tree
+										div
+											img.responsive-img(src='/images/tree2.png')
+						div.remainderTreecontainer
+							div.remainderTree
+								div
+								img.responsive-img(src='/images/tree2.png')
+
+	footer.page-footer
+		div.container
+			div.row
+				div.col-16-s12
+					h5.white-text Footer content
+					p.grey-text.text-lighten-4 You can use rows and colums here to organize your footer content.
+		div.footer-copyright
+			div.container  © 2016 Copyright COtree
 
 script.
 	$(document).ready(function() {
-		$('.remainderTree').css('height', '#{data.remainder}')
+		if('#{data.remainder}' == '0px') {
+			console.log("no remains")
+			$('.remainderTree').css('display', 'hide')
+		} else {
+			$('.remainderTree').css('height', '#{data.remainder}')
+		}
 		//$('div.remainderTree').css('height', '50%')
 	})
 
