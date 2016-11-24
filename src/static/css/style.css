@@ -1,0 +1,49 @@
+.brand-logo {
+  padding-left: 10px !important; }
+
+#navlogo {
+  max-height: 65px; }
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  position: relative; }
+
+main {
+  flex: 1 0 auto;
+  position: relative; }
+
+#forest {
+  position: absolute;
+  bottom: 0; }
+
+.treecontainer {
+  position: relative;
+  display: inline-block;
+  height: 100px;
+  width: 84px; }
+
+.tree {
+  position: relative;
+  bottom: 0;
+  background-color: green;
+  height: 100px;
+  width: 82px; }
+  .tree img {
+    height: 100px;
+    position: absolute;
+    bottom: 0; }
+
+footer {
+  position: relative; }
+
+.remainderTree {
+  position: absolute;
+  bottom: 0;
+  background-color: green;
+  width: 82px; }
+  .remainderTree img {
+    height: 100px;
+    position: absolute;
+    bottom: 0; }
