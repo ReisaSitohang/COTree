@@ -18,11 +18,11 @@ html
 						a(href="collapsible.html") JavaScript
 		main 
 			div.container helloooo #{data.remainder}
-				div#forest
-					div.treecontainer
-						div.tree
-							div
-							img(src="/images/tree2.png")
+				div#forest 
+					h3 omg them trees!
+					- for (var x=1; x < data.fulltree; x++)
+						<div class='treecontainer'><div class ='tree'><div><img src='/images/tree2.png'></div></div></div>
+
 		footer.page-footer
 			div.container
 				div.row

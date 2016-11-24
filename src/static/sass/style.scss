@@ -21,14 +21,18 @@ main {
 }
 .treecontainer {
 	position: relative;
+	display: inline-block;
 	height: 100px;
 	width: 84px;
 }
+.inline {
+	display: inline-block;
+}
 .tree {
-	position: absolute;
+	position: relative;
 	bottom: 0;
 	background-color: green;
-	height: 50px;
+	height: 100px;
 	width: 82px;
 	img {
 		height: 100px;
