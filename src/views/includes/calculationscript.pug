@@ -61,8 +61,9 @@ script.
 
 		//This reads the JSON info from the API
 			function readCarTrims(){
-				console.log( "readable?:"+$("#car-makes").val() )
-				$.getJSON("http://www.carqueryapi.com/api/0.3/?callback=?&cmd=getTrims&make="+$("#car-makes").val()+"&model="+$("#car-models").val()+"&year="+$("#car-models").val()+"", function(data) {
+				console.log( "readable?:"+$("#car-years").val())
+
+				$.getJSON("http://www.carqueryapi.com/api/0.3/?callback=?&cmd=getTrims&make="+$("#car-makes").val()+"&model="+$("#car-models").val()+"&year="+$("#car-years").val(), function(data) {
 					$("#car-trims").empty()
 				    let trims = data.Trims
 				    console.log(data.Trims)
