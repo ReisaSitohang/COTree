@@ -2,8 +2,6 @@
 	max-width: 100%;
 }
 
-
-
 .brand-logo{
 	padding-left: 10px !important;
 	}
@@ -20,11 +18,10 @@ body {
 
 #main {
 	flex: 1 0 auto;
-	position: relative;
 }
 
 #forest {
-	position: absolute;
+	position: relative;
 	bottom: 0;
 }
 .treecontainer {
@@ -32,6 +29,9 @@ body {
 	display: inline-block;
 	height: 100px;
 	width: 84px;
+}
+.remainderTreecontainer{
+	@extend .treecontainer
 }
 .tree {
 	position: relative;
@@ -61,13 +61,11 @@ footer {
 	}
 }
 
-
 .background{
 	height:100%;
 	background-image: url('../images/background.jpg') ;
 	background-size: cover;
 }
-
 
 /* just some content with arbitrary styles for explanation purposes */
 .login-form {
