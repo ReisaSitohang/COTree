@@ -24,9 +24,6 @@ main {
   height: 100px;
   width: 84px; }
 
-.inline {
-  display: inline-block; }
-
 .tree {
   position: relative;
   bottom: 0;
@@ -40,3 +37,13 @@ main {
 
 footer {
   position: relative; }
+
+.remainderTree {
+  position: absolute;
+  bottom: 0;
+  background-color: green;
+  width: 82px; }
+  .remainderTree img {
+    height: 100px;
+    position: absolute;
+    bottom: 0; }

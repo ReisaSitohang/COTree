@@ -2,8 +2,8 @@ html
 	head
 		link(type="text/css" rel="stylesheet" href="/css/materialize.css")
 		link(type="text/css" rel="stylesheet" href="/css/style.css")
-		script(type="text/javascript" src="/js/bin/materialize.min.js")
 		script(type="text/javascript" src="/jquery-3.1.1.min.js")
+		script(type="text/javascript" src="/js/bin/materialize.min.js")
 	body
 		nav
 			div.nav-wrapper
@@ -20,8 +20,15 @@ html
 			div.container helloooo #{data.remainder}
 				div#forest 
 					h3 omg them trees!
-					- for (var x=1; x < data.fulltree; x++)
-						<div class='treecontainer'><div class ='tree'><div><img src='/images/tree2.png'></div></div></div>
+					-	for (var x=1; x < data.fulltree; x++)
+							div.treecontainer
+								div.tree
+									div
+										img(src='/images/tree2.png')
+					div.treecontainer
+						div.remainderTree
+							div
+							img(src='/images/tree2.png')
 
 		footer.page-footer
 			div.container
@@ -31,5 +38,11 @@ html
 						p.grey-text.text-lighten-4 You can use rows and colums here to organize your footer content.
 			div.footer-copyright
 				div.container  © 2016 Copyright COtree
+
+script.
+	$(document).ready(function() {
+		$('.remainderTree').css('height', '#{data.remainder}')
+		//$('div.remainderTree').css('height', '50%')
+	})
 
 
