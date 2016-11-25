@@ -2,58 +2,67 @@ html
 	head
 		title Calculation
 		include includes/head.pug
-		include includes/calculationscriptrdw.pug			
+		include includes/calculationscriptrdw.pug
 	body
 		include includes/navbar.pug
 		main 
-			div.container hellooo #{data.remainder}
+			div.container 
 				div.row
 					div#forest 
-						h3 omg them trees!
-						-	for (var x=0; x < data.fulltree; x++)
-								div.treecontainer
+						h3#test omg them trees!
+						-	for (var x=1; x < data.fulltree; x++)
+								div.tahrees.treecontainer
 									div.tree
 										div
-										img(src='/images/tree2.png')
-						div.remainderTreecontainer
+											img(src='/images/tree2.png')
+						div.tahrees.remainderTreecontainer
 							div.remainderTree
 								div
-								img(src='/images/tree2.png')
-			
-
+									img(src='/images/tree2.png')
 	footer.page-footer
 		div.container
 			div.row
 				div.col-16-s12
-					h5.white-text Footer content
-					p.grey-text.text-lighten-4 You can use rows and colums here to organize your footer content.
+					p.grey-text.text-lighten-4 Thank you for thinking of the environment!
 		div.footer-copyright
 			div.container  © 2016 Copyright COtree
 
 script.
-	let remainderFunction = function() {
+	var remainderFunction = function() {
 		if('#{data.remainder}' == '0px') {
 			console.log("no remains")
 			$('.remainderTree').css('visibility', 'hidden')
+			$('.tree:hover').css('background-color', 'green')
 		} else if ('#{data.remainder}' !== '0px') {
 			$('.remainderTree').css('height', '#{data.remainder}')
+			$('.remainderTree :hover').css('background-color', 'green')
 		}
 	}
-	let noMoneyFunction = function () {
+	var noMoneyFunction = function () {
 		if('#{data.donationAmount}' == 0) {
 			console.log("nothing donated yet")
 			$('.remainderTree').css('background-color', '#bdbdbd')
 			$('.remainderTree').css('height', '100px')
+			$('.remainderTree').css('opacity', '0.2')
+			$('.remainderTree :hover').css('opacity', '0.5')
 		}
 	}
-
+	$.fn.extend({animateCss: function (animationName) {
+		var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+			this.addClass('animated ' + animationName).one(animationEnd, function() {
+			$(this).removeClass('animated ' + animationName);
+			});
+		}
+	});
+	
 	$(document).ready(function() {
 		if ('#{data.donationAmount}' == 0) {
 			noMoneyFunction()
 			} else if ('#{data.donationAmount}' !== 0) {
 			remainderFunction()
 			}
-		//$('div.remainderTree').css('height', '50%')
+		$('.tahrees').animateCss('wobble')
+		
 	})
 
 
