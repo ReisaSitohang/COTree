@@ -41,18 +41,18 @@ main {
 	@extend .treecontainer
 }
 .tree {
-	position: relative;
+	position: absolute;
 	bottom: 0;
 	background-color: $accent-color;
 	height: 100px;
 	width: 82px;
+	&:hover {
+		background-color: green;
+	}
 	img {
 		height: 100px;
 		position: absolute;
 		z-index: 1;
-		&:hover {
-			animate: bounce;
-		}
 	}
 }
 footer {

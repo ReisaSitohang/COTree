@@ -28,17 +28,17 @@ main {
   width: 84px; }
 
 .tree {
-  position: relative;
+  position: absolute;
   bottom: 0;
   background-color: #4CAF50;
   height: 100px;
   width: 82px; }
+  .tree:hover {
+    background-color: green; }
   .tree img {
     height: 100px;
     position: absolute;
     z-index: 1; }
-    .tree img:hover {
-      animate: bounce; }
 
 footer {
   position: relative; }

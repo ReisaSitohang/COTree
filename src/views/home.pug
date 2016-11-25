@@ -22,11 +22,13 @@ html
 				div.row
 					div#forest 
 						h3#test omg them trees!
-						-	for (var x=1; x < data.fulltree; x++)
+						-	for (var x=1, y= x + 'tree'; x < data.fulltree; x++) 
 								div.tahrees.treecontainer
-									div.tree
+									div(id=y, class='tree')
 										div
 											img(src='/images/tree2.png')
+							
+	
 						div.tahrees.remainderTreecontainer
 							div.remainderTree
 								div
@@ -40,25 +42,42 @@ html
 			div.container  © 2016 Copyright COtree
 
 script.
+	//what to do with the remainder tree
 	var remainderFunction = function() {
+		//hide when there is no remainder
 		if('#{data.remainder}' == '0px') {
 			console.log("no remains")
 			$('.remainderTree').css('visibility', 'hidden')
-			$('.tree:hover').css('background-color', 'green')
+			$('.tree').hover( function (){
+				$('.tree').css('background-color', 'green')
+			}, function(){
+				$('.tree').css('background-color', '#4CAF50')
+			})
+			//if there is fill the tree up to the percentage of the remainder amount
 		} else if ('#{data.remainder}' !== '0px') {
 			$('.remainderTree').css('height', '#{data.remainder}')
-			$('.remainderTree :hover').css('background-color', 'green')
+			$('.remainderTree').hover( function (){
+				$('.remainderTree').css('background-color', 'green')
+			}, function(){
+				$('.remainderTree').css('background-color', '#4CAF50')
+			})			
 		}
 	}
+	//what to display when no money has been donated yet
 	var noMoneyFunction = function () {
 		if('#{data.donationAmount}' == 0) {
 			console.log("nothing donated yet")
 			$('.remainderTree').css('background-color', '#bdbdbd')
 			$('.remainderTree').css('height', '100px')
 			$('.remainderTree').css('opacity', '0.2')
-			$('.remainderTree :hover').css('opacity', '0.5')
+			$('.remainderTree').hover( function (){
+				$('.remainderTree').css('opacity', '0.5')
+			}, function(){
+				$('.remainderTree').css('opacity', '0.2')
+			})	
 		}
 	}
+	//configure animate.css
 	$.fn.extend({animateCss: function (animationName) {
 		var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
 			this.addClass('animated ' + animationName).one(animationEnd, function() {
