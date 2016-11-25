@@ -1,9 +1,22 @@
+$primary-color-dark:   #512DA8;
+$primary-color:        #673AB7;
+$primary-color-light:  #D1C4E9;
+$primary-color-text:   #FFFFFF;
+$accent-color:         #4CAF50;
+$primary-text-color:   #212121;
+$secondary-text-color: #757575;
+$divider-color:        #BDBDBD;
+
+nav, footer.page-footer {
+	background-color: $primary-color-dark;
+}
 .brand-logo{
 	padding-left: 10px !important;
+	padding-top: 3px !important;
 	}
 
 #navlogo{
-	max-height:65px;
+	max-height:54px;
 }
 body {
 	display: flex;
@@ -30,13 +43,16 @@ main {
 .tree {
 	position: relative;
 	bottom: 0;
-	background-color: green;
+	background-color: $accent-color;
 	height: 100px;
 	width: 82px;
 	img {
 		height: 100px;
 		position: absolute;
-		bottom: 0;
+		z-index: 1;
+		&:hover {
+			animate: bounce;
+		}
 	}
 }
 footer {
@@ -45,11 +61,16 @@ footer {
 .remainderTree {
 	position: absolute;
 	bottom: 0;
-	background-color: green;
+	background-color: $accent-color;
 	width: 82px;
 	img {
 		height: 100px;
 		position: absolute;
 		bottom: 0;
 	}
+}
+.tahrees {
+	animation-duration: 2s;
+	animation-delay: 1s;
+	animation-iteration-count: 1;
 }
