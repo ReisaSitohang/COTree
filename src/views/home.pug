@@ -31,13 +31,28 @@ html
 			div.container  © 2016 Copyright COtree
 
 script.
-	$(document).ready(function() {
+	let remainderFunction = function() {
 		if('#{data.remainder}' == '0px') {
 			console.log("no remains")
 			$('.remainderTree').css('visibility', 'hidden')
 		} else if ('#{data.remainder}' !== '0px') {
 			$('.remainderTree').css('height', '#{data.remainder}')
 		}
+	}
+	let noMoneyFunction = function () {
+		if('#{data.donationAmount}' == 0) {
+			console.log("nothing donated yet")
+			$('.remainderTree').css('background-color', '#bdbdbd')
+			$('.remainderTree').css('height', '100px')
+		}
+	}
+
+	$(document).ready(function() {
+		if ('#{data.donationAmount}' == 0) {
+			noMoneyFunction()
+			} else if ('#{data.donationAmount}' !== 0) {
+			remainderFunction()
+			}
 		//$('div.remainderTree').css('height', '50%')
 	})
 
