@@ -6,19 +6,20 @@ html
 	body
 		include includes/navbar.pug
 		main 
-			div.container hellooo
+			div.container hellooo #{data.remainder}
 				div.row
 					div#forest 
 						h3 omg them trees!
-						-	for (var x=1; x < data.fulltree; x++)
+						-	for (var x=0; x < data.fulltree; x++)
 								div.treecontainer
 									div.tree
 										div
-											img.responsive-img(src='/images/tree2.png')
+										img(src='/images/tree2.png')
 						div.remainderTreecontainer
 							div.remainderTree
 								div
-								img.responsive-img(src='/images/tree2.png')
+								img(src='/images/tree2.png')
+			
 
 	footer.page-footer
 		div.container
@@ -33,8 +34,8 @@ script.
 	$(document).ready(function() {
 		if('#{data.remainder}' == '0px') {
 			console.log("no remains")
-			$('.remainderTree').css('display', 'hide')
-		} else {
+			$('.remainderTree').css('visibility', 'hidden')
+		} else if ('#{data.remainder}' !== '0px') {
 			$('.remainderTree').css('height', '#{data.remainder}')
 		}
 		//$('div.remainderTree').css('height', '50%')

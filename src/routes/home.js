@@ -5,9 +5,9 @@ const router = express.Router()
 router.get( '/home', (req, res) => {
 	console.log("Someone's home")
 	let data = {
-	donationAmount: 25,
-	fulltree: 25/2,
-	remainder: ((25 % 2)/2)*100 + 'px'
+	donationAmount: 10,
+	fulltree: 10/2,
+	remainder: ((10 % 2)/2)*100 + 'px'
 	}
 	for (var i = 1; i < data.fulltree; i++) {
 		console.log("i looped " + i + "times!")
