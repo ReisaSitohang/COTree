@@ -35,17 +35,17 @@ main {
   width: 84px; }
 
 .tree {
-  position: relative;
+  position: absolute;
   bottom: 0;
   background-color: #4CAF50;
   height: 100px;
   width: 82px; }
+  .tree:hover {
+    background-color: green; }
   .tree img {
     height: 100px;
     position: absolute;
     z-index: 1; }
-    .tree img:hover {
-      animate: bounce; }
 
 footer {
   position: relative; }
@@ -60,7 +60,6 @@ footer {
     position: absolute;
     bottom: 0; }
 
-<<<<<<< HEAD
 .background {
   height: 100%;
   background-image: url("../images/background.jpg");
@@ -80,9 +79,8 @@ footer {
   .login-form h1 {
     color: white;
     margin-left: 80px; }
-=======
+
 .tahrees {
   animation-duration: 2s;
   animation-delay: 1s;
   animation-iteration-count: 1; }
->>>>>>> added animate.css + wobbling trees
