@@ -29,5 +29,23 @@
 }
 
 .car {
+	opacity: 0.4;
 	width: 100%;
+}
+
+.selectedCar {
+	width: 100%;
+	opacity: 1;
+}
+
+.car:hover {
+	opacity: 1;
+}
+
+#carS:active , #carM:active , #carL:active  {
+	opacity: 1;
+}
+
+#carS:active , #carM:active , #carL:active  {
+	opacity: 1;
 }
