@@ -7,13 +7,7 @@ const bodyParser =  require('body-parser')
 const sequelize  =  require('sequelize')
 const session    =  require('express-session')
 const bcrypt     =  require('bcrypt-nodejs')
-
-
 const nodesass   = 	require('node-sass')
-
-const sass   	 =  require('node-sass')
-
-const fs         =  require('fs')
 const db         =  require('./models/database')
 const passport   =  require('passport')
 const Strategy   =  require('passport-facebook').Strategy
@@ -27,26 +21,6 @@ app.use(passport.session());
 
 // var initPassport = require('./passport/init');
 // initPassport(passport);
-
-
-
-const db = require(__dirname + '/models/database')
-
-
-sass.render({
-	file: __dirname + '/static/sass/materialize.scss',
-	outFile: __dirname + '/static/css/materialize.css'
-}, (error, result) => {
-	if(!error) {
-		fs.writeFile(__dirname + '/static/css/materialize.css', result.css.toString('utf8'), (err) =>{
-			if(!err){
-				console.log("file written to disk")
-			}
-		})
-	}
-})
-
-
 
 
 //Set views
