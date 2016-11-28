@@ -1,3 +1,4 @@
+'use strict'
 // require modules
 const sequelize = require( 'sequelize' )
 
@@ -21,7 +22,7 @@ db.user = db.connection.define('user', {
 })
 
 
-db.conn.sync( {'force': true} ).then(
+db.connection.sync( {'force': true} ).then(
 
 	() => { 
 		console.log ( 'Synchronized' )
