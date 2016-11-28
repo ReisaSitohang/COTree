@@ -68,13 +68,35 @@ script.
 			    }
 
 		//This calculates donation trough CAR TYPE, L/km info taken from bptargetneutral.com/uk/calculate/car/economy?fuel=P
+		let carS    = 7.8
+		let carM    = 9.2
+		let carL    = 12.8
+		let carUser = 0
+
+		$('select').material_select()
+
+		$('#carS').click(function () {
+			carUser = carS
+		    $('#carS').addClass('selectedCar')
+		    $('#carM').removeClass('selectedCar')
+		    $('#carL').removeClass('selectedCar')
+		})
+
+		$("#carM").click( function() {
+			carUser = carM
+		    $('#carM').addClass('selectedCar')
+		    $('#carS').removeClass('selectedCar')
+		    $('#carL').removeClass('selectedCar')
+		})
+		$("#carL").click( function() {
+			carUser = carL
+		    $('#carL').addClass('selectedCar')
+		    $('#carM').removeClass('selectedCar')
+		    $('#carS').removeClass('selectedCar')
+		})
 			function calcDonation3(km){
-					let carS = 7.8
-					let carM = 9.2
-					let carL = 12.8
-					
 		    		let brandstofsoort = $('#fuelType').val()
-		    		let brandstofperkm = $("#gasMileage").val()/100
+		    		let brandstofperkm = carUser/100
 		    		if ( brandstofsoort == 1 ){
 			    			LitersBrandstof = km*brandstofperkm
 			    			Co2Vervuiling   = LitersBrandstof*BenzineCo2
@@ -108,17 +130,11 @@ script.
 				calcDonation2( $("#Kilometers").val() )
 			}							
 		}		
-		//- function submitInfo3 () {
-		//- 	if( $("#Kenteken").val().length == 6  &&  $("#Kilometers").val() ){
-		//- 		calcDonation1( $("#Kilometers").val() )
-		//- 	}
-		//- 	if( $("gasMileage").val() &&  $("#Kilometers").val() && $("#fuelType").val() ){
-		//- 		calcDonation2( $("#Kilometers").val() )
-		//- 	}
-		//- 	//- if( $("#fuelType").val().length == 6  &&  $("#Kilometers").val() ){
-		//- 	//- 	calcDonation1( Kilometers )
-		//- 	//- }								
-		//- }
+		function submitInfo3 () {
+			if( carUser !== 0  &&  $("#fuelType").val() && $("#Kilometers").val() ){
+				calcDonation3( $("#Kilometers").val() )
+			}							
+		}
 
 
 		//Get donation info after clicking the button or pressing enter
