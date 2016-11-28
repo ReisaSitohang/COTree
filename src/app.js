@@ -49,10 +49,12 @@ nodesass.render({
 //let loginlogoutRouter = require( __dirname + '/routes/login' )
 //let registerRouter 	  = require( __dirname + '/routes/register' )
 let homeRouter 		  = require( __dirname + '/routes/home' )
+let calculationRouter = require( __dirname+'/routes/calculation' )
 
 //app.use('/', loginlogoutRouter )
 //app.use('/', registerRouter )
 app.use('/', homeRouter )
+app.use('/', calculationRouter )
 
 //Set port
 app.listen(3000, function () {

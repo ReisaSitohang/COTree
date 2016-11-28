@@ -1,0 +1,37 @@
+html
+	head
+		title Calculation
+		include includes/head.pug
+	include includes/calculationscriptAPI.pug
+	//- include includes/calculationscript.pug					
+	body
+		h1 Calculate your ride
+		h2 coTree badieboem
+	table
+		tbody
+			tr
+				th Year:
+				th Car Brand:
+				th Model:
+				th Trim:
+			tr
+				td
+					select#car-years(name='car-years')
+						include includes/carvalues.pug
+				td
+					select#car-makes(name='car-makes')
+						option(value='') ---
+				td
+					select#car-models(name='car-models')
+						option(value='') ---
+				td
+					select#car-model-trims(name='car-model-trims')
+	input#cq-search-btn(type='button', value="Test")
+	input#cq-show-data(type='button', value="Show Data")
+	div#car-model-data
+
+
+
+
+		//- button(onclick="readXML()") see xml data
+

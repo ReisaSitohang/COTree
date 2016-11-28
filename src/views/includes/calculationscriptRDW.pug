@@ -1,0 +1,198 @@
+script.
+	$( document ).ready( ()=> {
+		//Calculation Info (from emmisiefactoren kg co2, per liter) (tree info from adopt a tree in nepal)
+		let kgC02perboom  = 1000/3
+		let prijsperBoom  = 2
+		let BenzineCo2    = 2.740
+		let DieselCo2     = 3.230
+
+		//The 3 functions for the 3 ways to calculate the donation amount take place here
+		//This reads the JSON info from the API trough LICENCE PLATE
+			function calcDonation1(km){
+				let checkbox = 0
+				$.getJSON("https://opendata.rdw.nl/resource/8ys7-d773.json", function(data) {
+				    for (let i = 0; i < data.length; i++){
+				    	if( data[i].kenteken === $("#Kenteken").val() ){
+				    		checkbox = 1
+				    		let brandstofsoort = data[i].brandstof_omschrijving
+				    		let brandstofperkm = data[i].brandstofverbruik_gecombineerd/100
+				    		if ( brandstofsoort == "Benzine" ){
+					    			LitersBrandstof = km*brandstofperkm
+					    			Co2Vervuiling   = LitersBrandstof*BenzineCo2
+					    			Co2inBomen      = Co2Vervuiling/kgC02perboom
+					    			Donatie         = Co2inBomen*prijsperBoom
+					    			$("#donationAmount").empty()
+					    			$("#donationAmount").append("Hi, please donate "+parseFloat(Donatie).toFixed(2)+" to neutralize your carbon emmision :)")
+				    			}
+			    			if ( brandstofsoort == "Diesel" ){
+					    			LitersBrandstof = km*brandstofperkm
+					    			Co2Vervuiling = LitersBrandstof*DieselCo2
+					    			Co2inBomen = Co2Vervuiling/kgC02perboom
+					    			Donatie = Co2inBomen*prijsperBoom
+					    			$("#donationAmount").empty()
+					    			$("#donationAmount").append("Hi, please donate "+parseFloat(Donatie).toFixed(2)+" to neutralize your carbon emmision :)")
+				    			}
+
+				    	}
+				   	}
+			    })
+			    .then( () =>{
+			    	if(checkbox == 0){
+			    		$("#donationAmount").empty()
+			    		$("#donationAmount").append("Sorry, can't find your licence plate nr: "+$("#Kenteken").val()+"<br></br> Please look through car types or fill in your gas mileage.")
+			    	}
+			    })
+			}
+
+		//This calculates donation trough GASS MILEAGE
+			function calcDonation2(km){
+		    		let brandstofsoort = $('#fuelType').val()
+		    		let brandstofperkm = $("#gasMileage").val()/100
+		    		if ( brandstofsoort == 1 ){
+			    			LitersBrandstof = km*brandstofperkm
+			    			Co2Vervuiling   = LitersBrandstof*BenzineCo2
+			    			Co2inBomen      = Co2Vervuiling/kgC02perboom
+			    			Donatie         = Co2inBomen*prijsperBoom
+			    			console.log(Donatie)
+			    			$("#donationAmount").empty()
+			    			$("#donationAmount").append("Hi, please donate "+parseFloat(Donatie).toFixed(2)+" to neutralize your carbon emmision :)")
+		    			}
+	    			if ( brandstofsoort == 2 ){
+			    			LitersBrandstof = km*brandstofperkm
+			    			Co2Vervuiling = LitersBrandstof*DieselCo2
+			    			Co2inBomen = Co2Vervuiling/kgC02perboom
+			    			Donatie = Co2inBomen*prijsperBoom
+			    			$("#donationAmount").empty()
+			    			$("#donationAmount").append("Hi, please donate "+parseFloat(Donatie).toFixed(2)+" to neutralize your carbon emmision :)")
+		    			}
+			    }
+
+		//This calculates donation trough CAR TYPE, L/km info taken from bptargetneutral.com/uk/calculate/car/economy?fuel=P
+			function calcDonation3(km){
+					let carS = 7.8
+					let carM = 9.2
+					let carL = 12.8
+					
+		    		let brandstofsoort = $('#fuelType').val()
+		    		let brandstofperkm = $("#gasMileage").val()/100
+		    		if ( brandstofsoort == 1 ){
+			    			LitersBrandstof = km*brandstofperkm
+			    			Co2Vervuiling   = LitersBrandstof*BenzineCo2
+			    			Co2inBomen      = Co2Vervuiling/kgC02perboom
+			    			Donatie         = Co2inBomen*prijsperBoom
+			    			console.log(Donatie)
+			    			$("#donationAmount").empty()
+			    			$("#donationAmount").append("Hi, please donate "+parseFloat(Donatie).toFixed(2)+" to neutralize your carbon emmision :)")
+		    			}
+	    			if ( brandstofsoort == 2 ){
+			    			LitersBrandstof = km*brandstofperkm
+			    			Co2Vervuiling = LitersBrandstof*DieselCo2
+			    			Co2inBomen = Co2Vervuiling/kgC02perboom
+			    			Donatie = Co2inBomen*prijsperBoom
+			    			$("#donationAmount").empty()
+			    			$("#donationAmount").append("Hi, please donate "+parseFloat(Donatie).toFixed(2)+" to neutralize your carbon emmision :)")
+		    			}
+			    }
+
+
+		//Callback the different functions per calc type to submit the info and get the donation amount
+		function submitInfo1 () {
+			if( $("#Kenteken").val().length == 6  &&  $("#Kilometers").val() ){
+				calcDonation1( $("#Kilometers").val() )
+			}							
+		}
+		function submitInfo2 () {
+			//- console.log( $("#gasMileage").val()+$("#Kilometers").val()+$("#fuelType").val() )
+			if( $("#gasMileage").val() &&  $("#Kilometers").val() && $("#fuelType").val() ){
+			//- console.log("submitting info")
+				calcDonation2( $("#Kilometers").val() )
+			}							
+		}		
+		//- function submitInfo3 () {
+		//- 	if( $("#Kenteken").val().length == 6  &&  $("#Kilometers").val() ){
+		//- 		calcDonation1( $("#Kilometers").val() )
+		//- 	}
+		//- 	if( $("gasMileage").val() &&  $("#Kilometers").val() && $("#fuelType").val() ){
+		//- 		calcDonation2( $("#Kilometers").val() )
+		//- 	}
+		//- 	//- if( $("#fuelType").val().length == 6  &&  $("#Kilometers").val() ){
+		//- 	//- 	calcDonation1( Kilometers )
+		//- 	//- }								
+		//- }
+
+
+		//Get donation info after clicking the button or pressing enter
+		$("#search").click( function() {
+			console.log("clicked go button")
+			submitInfo1()
+		})
+		$("#Kenteken").keypress(function(e) {
+		    if(e.which == 13) {
+				submitInfo1()
+		    }
+		})
+		$("#Kilometers").keypress(function(e) {
+		    if(e.which == 13) {
+		        submitInfo1()
+		    }
+		})
+
+		//Show donation types
+		$('body').on("click", '#chooseLicence', function() {
+			console.log("KLIK")
+			$("#calculationArea").empty()
+			$("#calculationArea").append('<form><label>Please fill in your licence number and your distance in kilometers</label><input id="Kenteken" type="text" value="6KVH13"/><br/><input id="Kilometers" type="number" placeholder="distance in kilometers"/><br/><input id="search" class="btn" type="button" value="Go!"/></form><div id="donationAmount"></div>')
+		//setting handlers again after new html injection, dynamic html "jquery issue"
+			$("#search").click( function() {
+				console.log("clicked go button")
+				submitInfo1()
+			})
+			$("#Kenteken").keypress(function(e) {
+			    if(e.which == 13) {
+					submitInfo1()
+			    }
+			})
+			$("#Kilometers").keypress(function(e) {
+			    if(e.which == 13) {
+			        submitInfo1()
+			    }
+			})
+		})
+
+		$('body').on('click', '#chooseIknow', function() {
+		console.log("clicked the button")
+			$("#calculationArea").empty()
+			$("#calculationArea").append('<label>Please fill in your gass mileage</label><input id="gasMileage" type="text" placeholder="liters of gas per 100KM"/><br/><div class="input-field col s12"></div><label>Choose you fuel type</label><select id="fuelType"> <option value="" disabled="" selected="">Diesel or Benzine</option> <option value="1">Benzine</option> <option value="2">Diesel</option></select><br/><label>Distance of your car-ride</label><input id="Kilometers" type="number" placeholder="distance in kilometers"/><br/><input id="search" class="btn" type="button" value="Go!"/><div id="donationAmount"></div>')
+			//binding js handlers after new html injection, dynamic html "jquery issue"
+			$('select').material_select()
+			
+			$("#search").click( function() {
+				console.log("clicked go button")
+				submitInfo2()
+			})
+			$("#gasMileage").keypress(function(e) {
+			    if(e.which == 13) {
+					submitInfo2()
+			    }
+			})
+			$("#fuelType").keypress(function(e) {
+			    if(e.which == 13) {
+			        submitInfo2()
+			    }
+			})
+			$("#Kilometers").keypress(function(e) {
+			    if(e.which == 13) {
+			        submitInfo2()
+			    }
+			})
+		})
+
+		$('body').on('click', '#chooseCartype', function() {
+		console.log("clicked the button")
+			$("#calculationArea").empty()
+			$("#calculationArea").append('<label>Please choose you car type & fuel type</label><input id="gasMileage" type="text" placeholder="liters of gas per 100KM"/><br/><div class="input-field col s12"></div><label>Choose you fuel type</label><select> <option value="" disabled="" selected="">Diesel or Benzine</option> <option value="1">Benzine</option> <option value="2">Diesel</option></select><br/><label>Distance of your car-ride</label><input id="Kilometers" type="number" placeholder="distance in kilometers"/><br/><input id="searchKenteken" class="btn" type="button" value="Go!"/><div id="donationAmount"></div>')
+			//setting binded js again after new html injection, dynamic html "jquery issue"
+			$('select').material_select()
+		})
+
+	})	

@@ -1,0 +1,54 @@
+html
+	head
+		title Calculation
+		include includes/head.pug
+		include includes/calculationscriptrdw.pug				
+	body
+		include includes/navbar.pug
+		main
+			h3 Calculate your ride
+			form
+				label Click on the vehicle most like yours
+				div.row.cars
+					div.col.m1.offset-m1.col.s10.offset-s1
+						img#carS.car(src="./images/carS.png")
+					div.col.m1.col.s10.offset-s1
+						img#carM.car(src="./images/carM.png")
+					div.col.m1.col.s10.offset-s1
+						img#carL.car(src="./images/carL.png")
+				.input-field.col.s12
+				label Choose you fuel type
+				select
+					option(value='', disabled='', selected='') Diesel or Benzine
+					option(value='1') Benzine
+					option(value='2') Diesel
+				br
+				label Distance of your car-ride
+				input#Kilometers(type='number', placeholder='distance in kilometers')
+				br
+				input#search.btn(type='button', value='Go!')
+				#donationAmount
+				div.row.buttons
+					div.col.m1.offset-m1.buttongroup.col.s10.offset-s1
+						input#chooseLicence.btn(type='button', value="Licence")
+					div.col.m1.buttongroup.col.s10.offset-s1
+						input#chooseIknow.btn(type='button', value="Mileage")
+					div.col.m1.buttongroup.col.s10.offset-s1
+						input#chooseCartype.btn(type='button', value="Car")
+				div.row
+					div#calculationArea.col.m3.offset-m1.col.s10.offset-s1
+						form
+							label Please fill in your licence number and your distance in kilometers
+							input#Kenteken(type='text', value="6KVH13")
+							br
+							input#Kilometers(type='number', placeholder="distance in kilometers")
+							br
+							input#search.btn(type='button', value="Go!")
+						div#donationAmount
+	include includes/footer.pug
+
+
+
+
+		//- button(onclick="readXML()") see xml data
+
