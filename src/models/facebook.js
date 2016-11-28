@@ -6,15 +6,19 @@ const db = require('./database');
 const configAuth = require('../config/auth');
 
 
+
 passport.use('facebook', new Strategy({
    clientID: configAuth.facebookAuth.clientID,
    clientSecret:  configAuth.facebookAuth.clientSecret,
    callbackURL: configAuth.facebookAuth.callbackURL,
    profileFields: ['id', 'name', 'email']
+
  },
  function(accessToken, refreshToken, profile, callback) {
   
   profile.accessToken = accessToken;
+
+}))
 
 
 findOrCreateUser = () => {
@@ -37,21 +41,10 @@ findOrCreateUser = () => {
 	})
 }
 
-
-
 process.nextTick(findOrCreateUser);
 console.log(profile)
 return callback(null, profile);
 
-}))
-
-passport.serializeUser(function(user, callback) {
- var sessionUser = {
-   id: user.id,
-   accessToken: user.accessToken
- }
-callback(null, sessionUser);
-});
 
 passport.deserializeUser(function(id, done) {
    var accessToken = id.accessToken;
@@ -70,4 +63,3 @@ passport.deserializeUser(function(id, done) {
        }
      );
 });
-

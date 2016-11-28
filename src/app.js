@@ -8,6 +8,7 @@ const sequelize  =  require('sequelize')
 const session    =  require('express-session')
 const bcrypt     =  require('bcrypt-nodejs')
 
+
 const nodesass   = 	require('node-sass')
 
 const sass   	 =  require('node-sass')
@@ -30,6 +31,21 @@ app.use(passport.session());
 
 
 const db = require(__dirname + '/models/database')
+
+
+sass.render({
+	file: __dirname + '/static/sass/materialize.scss',
+	outFile: __dirname + '/static/css/materialize.css'
+}, (error, result) => {
+	if(!error) {
+		fs.writeFile(__dirname + '/static/css/materialize.css', result.css.toString('utf8'), (err) =>{
+			if(!err){
+				console.log("file written to disk")
+			}
+		})
+	}
+})
+
 
 
 
@@ -74,16 +90,14 @@ let homeRouter 		  = require( __dirname + '/routes/home' )
 let calculationRouter = require( __dirname+'/routes/calculation' )
 
 // Declaring the passport stuff
-
-
-
-
-
-
+// //Setting Routes
+let login = require(__dirname + '/routes/login' )
 //app.use('/', loginlogoutRouter )
 //app.use('/', registerRouter )
 app.use('/', homeRouter )
 app.use('/', calculationRouter )
+app.use('/', login)
+
 
 //Set port
 app.listen(3000, function () {
@@ -91,22 +105,8 @@ app.listen(3000, function () {
 })
 
 
-//Set views
-app.set('views', __dirname + '/views')
-app.set('view engine', 'pug')
 
 
 
-// //Setting Routes
-let login = require(__dirname + '/routes/login' )
-// let login     = require(__dirname + '/routes/login')
-// let register  = require(__dirname + '/routes/register')
-// let profile   = require(__dirname + '/routes/profile')
 
-
-app.use('/', login)
-// app.use('/', login)
-// app.use('/', register)
-// app.use('/', profile)
-// app.use('/', registerRouter )
 

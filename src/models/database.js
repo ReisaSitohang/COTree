@@ -20,7 +20,9 @@ db.user = db.connection.define('user', {
 	email: {type: sequelize.STRING, unique: true}
 })
 
-db.connection.sync( {'force': true} ).then(
+
+db.conn.sync( {'force': true} ).then(
+
 	() => { 
 		console.log ( 'Synchronized' )
 	},
