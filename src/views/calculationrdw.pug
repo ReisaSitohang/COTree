@@ -8,21 +8,26 @@ html
 		main
 			h3 Calculate your ride
 			form
-				//- label Please fill in your gass mileage
-				//- input#gasMileage(type='text', placeholder='liters of gas per 100KM')
-				//- br
-				//- .input-field.col.s12
-				//- label Choose you fuel type
-				//- select
-				//- 	option(value='', disabled='', selected='') Diesel or Benzine
-				//- 	option(value='1') Benzine
-				//- 	option(value='2') Diesel
-				//- br
-				//- label Distance of your car-ride
-				//- input#Kilometers(type='number', placeholder='distance in kilometers')
-				//- br
-				//- input#searchKenteken(type='button', val='', ue='Go!')
-				//- #donationAmount
+				label Click on the vehicle most like yours
+				div.row.cars
+					div.col.m1.offset-m1.col.s10.offset-s1
+						img#carS.car(src="./images/carS.png")
+					div.col.m1.col.s10.offset-s1
+						img#carM.car(src="./images/carM.png")
+					div.col.m1.col.s10.offset-s1
+						img#carL.car(src="./images/carL.png")
+				.input-field.col.s12
+				label Choose you fuel type
+				select
+					option(value='', disabled='', selected='') Diesel or Benzine
+					option(value='1') Benzine
+					option(value='2') Diesel
+				br
+				label Distance of your car-ride
+				input#Kilometers(type='number', placeholder='distance in kilometers')
+				br
+				input#search.btn(type='button', value='Go!')
+				#donationAmount
 				div.row.buttons
 					div.col.m1.offset-m1.buttongroup.col.s10.offset-s1
 						input#chooseLicence.btn(type='button', value="Licence")
