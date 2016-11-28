@@ -15,13 +15,12 @@ db.connection       =  new sequelize('cotree', process.env.POSTGRES_USER, proces
 
 db.user = db.connection.define('user', {
 	fbid: sequelize.BIGINT,
-	name: {type: sequelize.STRING, unique: true},
+	firstname: {type: sequelize.STRING, unique: true},
 	lastname: {type: sequelize.STRING, unique: true},
-	email: {type: sequelize.STRING, unique: true},
-	password: sequelize.STRING
+	email: {type: sequelize.STRING, unique: true}
 })
 
-db.conn.sync( {'force': true} ).then(
+db.connection.sync( {'force': true} ).then(
 	() => { 
 		console.log ( 'Synchronized' )
 	},

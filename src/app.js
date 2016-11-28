@@ -10,6 +10,25 @@ const bcrypt     =  require('bcrypt-nodejs')
 
 const nodesass   = 	require('node-sass')
 
+const sass   	 =  require('node-sass')
+
+const fs         =  require('fs')
+const db         =  require('./models/database')
+const passport   =  require('passport')
+const Strategy   =  require('passport-facebook').Strategy
+let facebook     =  require('./models/facebook')
+
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+
+
+// var initPassport = require('./passport/init');
+// initPassport(passport);
+
+
+
 const db = require(__dirname + '/models/database')
 
 
@@ -54,6 +73,13 @@ nodesass.render({
 let homeRouter 		  = require( __dirname + '/routes/home' )
 let calculationRouter = require( __dirname+'/routes/calculation' )
 
+// Declaring the passport stuff
+
+
+
+
+
+
 //app.use('/', loginlogoutRouter )
 //app.use('/', registerRouter )
 app.use('/', homeRouter )
@@ -65,16 +91,20 @@ app.listen(3000, function () {
 })
 
 
+//Set views
+app.set('views', __dirname + '/views')
+app.set('view engine', 'pug')
+
 
 
 // //Setting Routes
-// let indexRoot = require(__dirname + '/routes/index' )
+let login = require(__dirname + '/routes/login' )
 // let login     = require(__dirname + '/routes/login')
 // let register  = require(__dirname + '/routes/register')
 // let profile   = require(__dirname + '/routes/profile')
 
 
-// app.use('/', indexRoot)
+app.use('/', login)
 // app.use('/', login)
 // app.use('/', register)
 // app.use('/', profile)
