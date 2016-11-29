@@ -24,6 +24,9 @@ script.
 					    			Donatie         = Co2inBomen*prijsperBoom
 					    			$("#donationAmount").empty()
 					    			$("#donationAmount").append("Hi, please donate "+parseFloat(Donatie).toFixed(2)+" to neutralize your carbon emmision :)")
+					    			$.post("/calculation", {donation: Donatie, kilometer: km }, (res)=>{
+									console.log("Posting info to Node")
+								})
 				    			}
 			    			if ( brandstofsoort == "Diesel" ){
 					    			LitersBrandstof = km*brandstofperkm
@@ -33,7 +36,9 @@ script.
 					    			$("#donationAmount").empty()
 					    			$("#donationAmount").append("Hi, please donate "+parseFloat(Donatie).toFixed(2)+" to neutralize your carbon emmision :)")
 				    			}
-
+				    				$.post("/calculation", {donation: Donatie, kilometer: km }, (res)=>{
+									console.log("Posting info to Node")
+								})
 				    	}
 				   	}
 			    })

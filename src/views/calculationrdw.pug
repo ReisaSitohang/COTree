@@ -19,12 +19,17 @@ html
 					div#calculationArea.col.m4.offset-m1.col.s10.offset-s1
 						form
 							label Please fill in your licence number and your distance in kilometers
-							input#Kenteken(type='text', value="74PKBV")
+							input#Kenteken(type='text', value="91SFBH")
 							br
 							input#Kilometers(type='number', placeholder="distance in kilometers")
 							br
 							input#search.btn(type='button', value="Go!")
-						div#donationAmount
+					div.col.m5.offset-m1.col.s10.offset-s1#donationArea
+						h5 Donate this to neutralize your Co2 :)
+						h5#donationAmount €
+						div.center.bottom
+							input#donateBtn.btn(type='Submit', value="Donate")
+						
 	include includes/footer.pug
 
 

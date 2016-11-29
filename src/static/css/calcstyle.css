@@ -4,7 +4,17 @@
 	border-radius: 0px 0px 30px 30px;
 	padding: 20px;
 	min-height: 60%;
-	background-image: url("/images/tree2.png");
+	background-image: url("");
+	background-repeat: repeat-x;
+}
+
+#donationArea {
+/*	border: solid;*/
+	background-color: lightgreen;
+	border-radius: 30px 30px 30px 30px;
+	padding: 20px;
+	min-height: 50%;
+	background-image: url("");
 	background-repeat: repeat-x;
 }
 
