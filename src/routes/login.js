@@ -29,11 +29,11 @@ router.route('/login')
 	);
 
 router.route('/auth/facebook')
-	.get(passport.authenticate('facebook'))
+	.get(passport.authenticate('facebook', {scope: ['public_profile', 'email']}))
 
 router.route('/auth/facebook/callback')
 	.get(passport.authenticate('facebook', {
-		successRedirect: '/profile',
+		successRedirect: '/home',
 		failureRedirect: '/index'
 	}))
 

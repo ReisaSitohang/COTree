@@ -15,7 +15,7 @@ passport.use('facebook', new Strategy({
  function(accessToken, refreshToken, profile, callback) {
   
   profile.accessToken = accessToken;
-
+  console.log(profile)
 
 findOrCreateUser = () => {
   db.user.find({where: {'fbid' : profile.id}}).then((user)=> {
@@ -23,6 +23,7 @@ findOrCreateUser = () => {
       console.log('User already exists with this username')
       return
     } else {
+      console.log(db.user)
       console.log('The user cannot be found, creating new one')
       db.user.create({
         'fbid': profile.id,
@@ -40,7 +41,6 @@ findOrCreateUser = () => {
 
 
 process.nextTick(findOrCreateUser);
-console.log(profile)
 return callback(null, profile);
 
 }))

@@ -13,15 +13,8 @@ const passport   =  require('passport')
 const Strategy   =  require('passport-facebook').Strategy
 let facebook     =  require('./models/facebook')
 
-
 app.use(passport.initialize());
 app.use(passport.session());
-
-
-
-// var initPassport = require('./passport/init');
-// initPassport(passport);
-
 
 //Set views
 app.set('views', './views')
@@ -58,19 +51,16 @@ nodesass.render({
 })
 
 //Setting Routes
-//let loginlogoutRouter = require( __dirname + '/routes/login' )
-//let registerRouter 	  = require( __dirname + '/routes/register' )
 let homeRouter 		  = require( __dirname + '/routes/home' )
 let calculationRouter = require( __dirname+'/routes/calculation' )
-
-// Declaring the passport stuff
-// //Setting Routes
+let donate = require( __dirname+'/routes/donate' )
 let login = require(__dirname + '/routes/login' )
-//app.use('/', loginlogoutRouter )
-//app.use('/', registerRouter )
+
+
 app.use('/', homeRouter )
 app.use('/', calculationRouter )
 app.use('/', login)
+app.use('/', donate)
 
 
 //Set port

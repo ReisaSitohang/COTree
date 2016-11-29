@@ -1,25 +1,20 @@
-html 
+html
 	head
-		// - Style Sheets
-		link(href='http://fonts.googleapis.com/icon?family=Material+Icons', rel='stylesheet')
-		link(type='text/css', rel='stylesheet', href='css/materialize.css', media='screen,projection')
-		// - Scripts
-		//- script(type='text/javascript', src='js/facebookapi.js')
-		// - Meta
-		meta(name='viewport', content='width=device-width, initial-scale=1.0')
+		title Calculation
+		include includes/head.pug
+		include includes/calculationscriptrdw.pug				
 	body
-		// - Navigation
-		nav
-			.nav-wrapper
-				a.brand-logo(href='#') COTree
-				ul#nav-mobile.right.hide-on-med-and-down
-					li 
-						a(href='register') Sign-Up
-					li 
-						a(href='#') Menu 3
 		// - Login Form
-		h2#error-message= message
-		div#login-form
-			a(href="/auth/facebook") Login with Facebook
+		.background 
+		.login-form
+			.overlay
+				h1 Welcome to COTree!
+				a(href="/auth/facebook")
+					img(src='/images/fb_login.png')
+				
 	
+
+
+
+
 
