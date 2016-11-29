@@ -18,27 +18,27 @@ script.
 				    		console.log(data[i].brandstofverbruik_gecombineerd)
 				    		let brandstofperkm = data[i].brandstofverbruik_gecombineerd/100
 				    		if ( brandstofsoort == "Benzine" ){
-					    			LitersBrandstof = km*brandstofperkm
-					    			Co2Vervuiling   = LitersBrandstof*BenzineCo2
-					    			Co2inBomen      = Co2Vervuiling/kgC02perboom
-					    			Donatie         = Co2inBomen*prijsperBoom
-					    			$("#donationAmount").empty()
-					    			$("#donationAmount").append("Hi, please donate "+parseFloat(Donatie).toFixed(2)+" to neutralize your carbon emmision :)")
-					    			$.post("/calculation", {donation: Donatie, kilometer: km }, (res)=>{
-									console.log("Posting info to Node")
+				    			LitersBrandstof = km*brandstofperkm
+				    			Co2Vervuiling   = LitersBrandstof*BenzineCo2
+				    			Co2inBomen      = Co2Vervuiling/kgC02perboom
+				    			Donatie         = Co2inBomen*prijsperBoom
+				    			$("#donationAmount").empty()
+				    			$("#donationAmount").append("Co2 in kg: "+parseFloat(Co2Vervuiling).toFixed(0)+"<br> Donate €"+parseFloat(Donatie).toFixed(2)+"<br>to neutralize your carbon emmision :)")
+				    			$.post("/calculation", {donation: parseFloat(Donatie).toFixed(2), kilometer: km }, (res)=>{
+								console.log("Posting info to Node")
 								})
-				    			}
+				    		}
 			    			if ( brandstofsoort == "Diesel" ){
-					    			LitersBrandstof = km*brandstofperkm
-					    			Co2Vervuiling = LitersBrandstof*DieselCo2
-					    			Co2inBomen = Co2Vervuiling/kgC02perboom
-					    			Donatie = Co2inBomen*prijsperBoom
-					    			$("#donationAmount").empty()
-					    			$("#donationAmount").append("Hi, please donate "+parseFloat(Donatie).toFixed(2)+" to neutralize your carbon emmision :)")
-				    			}
-				    				$.post("/calculation", {donation: Donatie, kilometer: km }, (res)=>{
-									console.log("Posting info to Node")
+				    			LitersBrandstof = km*brandstofperkm
+				    			Co2Vervuiling = LitersBrandstof*DieselCo2
+				    			Co2inBomen = Co2Vervuiling/kgC02perboom
+				    			Donatie = Co2inBomen*prijsperBoom
+				    			$("#donationAmount").empty()
+				    			$("#donationAmount").append("Co2 in kg: "+parseFloat(Co2Vervuiling).toFixed(0)+"<br> Donate: € "+parseFloat(Donatie).toFixed(2)+"<br>to neutralize your carbon emmision :)")
+				    			$.post("/calculation", {donation: parseFloat(Donatie).toFixed(2), kilometer: km }, (res)=>{
+								console.log("Posting info to Node")
 								})
+				    		}
 				    	}
 				   	}
 			    })
@@ -61,7 +61,7 @@ script.
 			    			Donatie         = Co2inBomen*prijsperBoom
 			    			console.log(Donatie)
 			    			$("#donationAmount").empty()
-			    			$("#donationAmount").append("Hi, please donate "+parseFloat(Donatie).toFixed(2)+" to neutralize your carbon emmision :)")
+			    			$("#donationAmount").append("Co2 in kg: "+parseFloat(Co2Vervuiling).toFixed(0)+"<br> Donate €"+parseFloat(Donatie).toFixed(2)+"<br>to neutralize your carbon emmision :)")
 		    			}
 	    			if ( brandstofsoort == 2 ){
 			    			LitersBrandstof = km*brandstofperkm
@@ -69,7 +69,7 @@ script.
 			    			Co2inBomen = Co2Vervuiling/kgC02perboom
 			    			Donatie = Co2inBomen*prijsperBoom
 			    			$("#donationAmount").empty()
-			    			$("#donationAmount").append("Hi, please donate "+parseFloat(Donatie).toFixed(2)+" to neutralize your carbon emmision :)")
+			    			$("#donationAmount").append("Co2 in kg: "+parseFloat(Co2Vervuiling).toFixed(0)+"<br> Donate €"+parseFloat(Donatie).toFixed(2)+"<br>to neutralize your carbon emmision :)")
 		    			}
 			    }
 
@@ -91,7 +91,7 @@ script.
 			    			Donatie         = Co2inBomen*prijsperBoom
 			    			console.log(Donatie)
 			    			$("#donationAmount").empty()
-			    			$("#donationAmount").append("Hi, please donate "+parseFloat(Donatie).toFixed(2)+" to neutralize your carbon emmision :)")
+			    			$("#donationAmount").append("Co2 in kg: "+parseFloat(Co2Vervuiling).toFixed(0)+"<br> Donate €"+parseFloat(Donatie).toFixed(2)+"<br>to neutralize your carbon emmision :)")
 		    			}
 	    			if ( brandstofsoort == 2 ){
 			    			LitersBrandstof = km*brandstofperkm
@@ -99,7 +99,7 @@ script.
 			    			Co2inBomen = Co2Vervuiling/kgC02perboom
 			    			Donatie = Co2inBomen*prijsperBoom
 			    			$("#donationAmount").empty()
-			    			$("#donationAmount").append("Hi, please donate "+parseFloat(Donatie).toFixed(2)+" to neutralize your carbon emmision :)")
+			    			$("#donationAmount").append("Co2 in kg: "+parseFloat(Co2Vervuiling).toFixed(0)+"<br> Donate €"+parseFloat(Donatie).toFixed(2)+"<br>to neutralize your carbon emmision :)")
 		    			}
 			    }
 
@@ -143,8 +143,8 @@ script.
 		//Show donation types
 		$('body').on("click", '#chooseLicence', function() {
 			console.log("KLIK")
-			$("#calculationArea").empty()
-			$("#calculationArea").append('<form><label>Please fill in your licence number and your distance in kilometers</label><input id="Kenteken" type="text" value="74PKBV"/><br/><input id="Kilometers" type="number" placeholder="distance in kilometers"/><br/><input id="search" class="btn" type="button" value="Go!"/></form><div id="donationAmount"></div>')
+			$("#calculationAppend").empty()
+			$("#calculationAppend").append('<div id="calculationArea" class="col m4 offset-m1 col s10 offset-s1"> <form> <label>Please fill in your licence number and your distance in kilometers</label> <input id="Kenteken" type="text" value="91SFBH"/><br/> <input id="Kilometers" type="number" placeholder="distance in kilometers"/><br/> <input id="search" type="button" value="Go!" class="btn"/></form></div><div id="donationArea" class="col m5 offset-m1 col s10 offset-s1"> <div id="donationTextBox" class="col s12"><br/> <h5 id="donationAmount"></h5> </div><div class="col s12"> <input id="donatenowBtn" type="button" value="Donate total now" class="btn"/> <input id="donatelaterBtn" type="button" value="Save to your total" class="btn"/> </div></div>')
 		//setting handlers again after new html injection, dynamic html "jquery issue"
 			$("#search").click( function() {
 				console.log("clicked go button")
@@ -164,8 +164,8 @@ script.
 
 		$('body').on('click', '#chooseIknow', function() {
 		console.log("clicked the button")
-			$("#calculationArea").empty()
-			$("#calculationArea").append('<label>Please fill in your gass mileage</label><input id="gasMileage" type="text" placeholder="liters of gas per 100KM"/><br/><div class="input-field col s12"></div><label>Choose you fuel type</label><select id="fuelType"> <option value="" disabled="" selected="">Diesel or Benzine</option> <option value="1">Benzine</option> <option value="2">Diesel</option></select><br/><label>Distance of your car-ride</label><input id="Kilometers" type="number" placeholder="distance in kilometers"/><br/><input id="search" class="btn" type="button" value="Go!"/><div id="donationAmount"></div>')
+			$("#calculationAppend").empty()
+			$("#calculationAppend").append('<div id="calculationArea" class="col m4 offset-m1 col s10 offset-s1"><label>Please fill in your gass mileage</label><input id="gasMileage" type="text" placeholder="liters of gas per 100KM"/><br/><div class="input-field col s12"></div><label>Choose you fuel type</label><select id="fuelType"> <option value="" disabled="" selected="">Diesel or Benzine</option> <option value="1">Benzine</option> <option value="2">Diesel</option></select><br/><label>Distance of your car-ride</label><input id="Kilometers" type="number" placeholder="distance in kilometers"/><br/><input id="search" class="btn" type="button" value="Go!"/></div></div><div id="donationArea" class="col m5 offset-m1 col s10 offset-s1"> <div id="donationTextBox" class="col s12"><br/> <h5 id="donationAmount"></h5> </div><div class="col s12"> <input id="donatenowBtn" type="button" value="Donate total now" class="btn"/> <input id="donatelaterBtn" type="button" value="Save to your total" class="btn"/> </div></div>')
 			//binding js handlers after new html injection, dynamic html jquery issue
 			$('select').material_select()
 			
@@ -192,8 +192,8 @@ script.
 
 		$('body').on('click', '#chooseCartype', function() {
 		console.log("clicked the button")
-			$("#calculationArea").empty()
-			$("#calculationArea").append('<form><label>Click on the vehicle most like yours</label><div class="row"><div class="col s10 offset-s1"><p id="cargasInfo"><br></p></div></div><div class="row cars"><div class=" col m4 col s10 offset-s1"><img class="car" id="carS" src="./images/carS.png"></div><div class="col m4 col s10 offset-s1"><img class="car" id="carM" src="./images/carM.png"></div><div class="col m4 col s10 offset-s1"><img class="car" id="carL" src="./images/carL.png"></div></div><div class="input-field col s12"></div><label>Choose you fuel type</label> <select id="fuelType"><option disabled selected value="">Diesel or Benzine</option><option value="1">Benzine</option><option value="2">Diesel</option></select><br><label>Distance of your car-ride</label> <input id="Kilometers" placeholder="distance in kilometers" type="number"><br><input class="btn" id="search" type="button" value="Go!"></form><div id="donationAmount"></div>')
+			$("#calculationAppend").empty()
+			$("#calculationAppend").append('<div id="calculationArea" class="col m4 offset-m1 col s10 offset-s1"><form><label>Click on the vehicle most like yours</label><div class="row"><div class="col s10 offset-s1"><p id="cargasInfo"><br></p></div></div><div class="row cars"><div class=" col m4 col s10 offset-s1"><img class="car" id="carS" src="./images/carS.png"></div><div class="col m4 col s10 offset-s1"><img class="car" id="carM" src="./images/carM.png"></div><div class="col m4 col s10 offset-s1"><img class="car" id="carL" src="./images/carL.png"></div></div><div class="input-field col s12"></div><label>Choose you fuel type</label> <select id="fuelType"><option disabled selected value="">Diesel or Benzine</option><option value="1">Benzine</option><option value="2">Diesel</option></select><br><label>Distance of your car-ride</label> <input id="Kilometers" placeholder="distance in kilometers" type="number"><br><input class="btn" id="search" type="button" value="Go!"></form></div><div id="donationArea" class="col m5 offset-m1 col s10 offset-s1"> <div id="donationTextBox" class="col s12"><br/> <h5 id="donationAmount"></h5> </div><div class="col s12"> <input id="donatenowBtn" type="button" value="Donate total now" class="btn"/> <input id="donatelaterBtn" type="button" value="Save to your total" class="btn"/> </div></div>')
 			//setting binded js again after new html injection, dynamic html jquery issue
 			$('select').material_select()
 
