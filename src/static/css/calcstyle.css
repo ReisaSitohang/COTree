@@ -3,6 +3,23 @@
 	border-color: lightgreen;
 	border-radius: 0px 0px 30px 30px;
 	padding: 20px;
+	min-height: 65%;
+	background-image: url("");
+	background-repeat: repeat-x;
+}
+
+#donationArea {
+	text-align: center;
+}
+
+#donationArea {
+/*	border: solid;*/
+	background-color: lightgreen;
+	border-radius: 30px 30px 30px 30px;
+	padding: 20px;
+	min-height: 50%;
+	background-image: url("");
+	background-repeat: repeat-x;
 }
 
 .row .col {
@@ -24,10 +41,49 @@
 }
 
 #chooseIknow.btn {
-	text-align: left;
 	width: 100%;
 }
 
+div#donationTextBox{
+	margin-top: 80px;
+	min-height: 150px;
+	border-radius: 20px 20px 20px 20px;
+	background-color: lightblue;
+}
+
+#donatelaterBtn {
+	margin: 5px;
+}
+
+#donatelaterBtn {
+	margin: 5px;	
+}
+
 .car {
+	opacity: 0.4;
 	width: 100%;
+}
+
+.selectedCar {
+	width: 100%;
+	opacity: 1;
+}
+
+.car:hover {
+	opacity: 1;
+	width: 100%;
+}
+
+#carS:active , #carM:active , #carL:active  {
+	opacity: 1;
+}
+
+#carS:active , #carM:active , #carL:active  {
+	opacity: 1;
+}
+
+p#cargasInfo {
+	text-align: center;
+	margin: 0;
+	font-size: 10px;
 }
