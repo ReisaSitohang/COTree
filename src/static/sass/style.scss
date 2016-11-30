@@ -30,7 +30,7 @@ body {
 	position: relative;
 }
 
-#main {
+main {
 	flex: 1 0 auto;
 }
 
@@ -67,9 +67,30 @@ footer {
 }
 .remainderTree {
 	position: absolute;
+	visibility: hidden;
 	bottom: 0;
 	background-color: $accent-color;
 	width: 82px;
+	&:hover {
+		background-color: green;
+	}
+	img {
+		height: 100px;
+		position: absolute;
+		bottom: 0;
+	}
+}
+.nomoneytree {
+	position: absolute;
+	visibility: hidden;
+	bottom: 0;
+	background-color: $divider-color;
+	height: 100px;
+	width: 82px;
+	opacity: 0.2;
+	&:hover {
+		opacity: 0.5;
+	}
 	img {
 		height: 100px;
 		position: absolute;
@@ -104,3 +125,4 @@ footer {
 	animation-delay: 1s;
 	animation-iteration-count: 1;
 }
+

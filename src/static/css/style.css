@@ -17,13 +17,6 @@ body {
   flex-direction: column;
   position: relative; }
 
-#main {
-  flex: 1 0 auto;
-  position: relative; }
-
-main {
-  flex: 1 0 auto; }
-
 main {
   flex: 1 0 auto; }
 
@@ -55,10 +48,28 @@ footer {
 
 .remainderTree {
   position: absolute;
+  visibility: hidden;
   bottom: 0;
   background-color: #4CAF50;
   width: 82px; }
+  .remainderTree:hover {
+    background-color: green; }
   .remainderTree img {
+    height: 100px;
+    position: absolute;
+    bottom: 0; }
+
+.nomoneytree {
+  position: absolute;
+  visibility: hidden;
+  bottom: 0;
+  background-color: #BDBDBD;
+  height: 100px;
+  width: 82px;
+  opacity: 0.2; }
+  .nomoneytree:hover {
+    opacity: 0.5; }
+  .nomoneytree img {
     height: 100px;
     position: absolute;
     bottom: 0; }
@@ -82,11 +93,6 @@ footer {
   .login-form h1 {
     color: white;
     margin-left: 80px; }
-
-.tahrees {
-  animation-duration: 2s;
-  animation-delay: 1s;
-  animation-iteration-count: 1; }
 
 .tahrees {
   animation-duration: 2s;

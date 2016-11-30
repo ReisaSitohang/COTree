@@ -2,7 +2,6 @@ html
 	head
 		title Calculation
 		include includes/head.pug
-		include includes/calculationscriptrdw.pug
 	body
 		include includes/navbar.pug
 		main 
@@ -16,18 +15,22 @@ html
 										div
 											img(src='/images/tree2.png')
 							
-	
+
 						div.tahrees.remainderTreecontainer
 							div.remainderTree
 								div
 									img(src='/images/tree2.png')
-	footer.page-footer
-		div.container
-			div.row
-				div.col-16-s12
-					p.grey-text.text-lighten-4 Thank you for thinking of the environment!
-		div.footer-copyright
-			div.container  © 2016 Copyright COtree
+						div.tahrees.remainderTreecontainer
+							div.nomoneytree
+								div
+									img(src='/images/tree2.png')
+		footer.page-footer
+			div.container
+				div.row
+					div.col-16-s12
+						p.grey-text.text-lighten-4 Thank you for thinking of the environment!
+			div.footer-copyright
+				div.container  © 2016 Copyright COtree
 
 script.
 	//what to do with the remainder tree
@@ -35,34 +38,17 @@ script.
 		//hide when there is no remainder
 		if('#{data.remainder}' == '0px') {
 			console.log("no remains")
-			$('.remainderTree').css('visibility', 'hidden')
-			$('.tree').hover( function (){
-				$('.tree').css('background-color', 'green')
-				}, function(){
-				$('.tree').css('background-color', '#4CAF50')
-			})
 			//if there is fill the tree up to the percentage of the remainder amount
 		} else if ('#{data.remainder}' !== '0px') {
 			$('.remainderTree').css('height', '#{data.remainder}')
-			$('.remainderTree').hover( function (){
-				$('.remainderTree').css('background-color', 'green')
-			}, function(){
-				$('.remainderTree').css('background-color', '#4CAF50')
-			})			
+			$('.remainderTree').css('visibility', 'visible')			
 		}
 	}
 	//what to display when no money has been donated yet
 	var noMoneyFunction = function () {
 		if('#{data.donationAmount}' == 0) {
 			console.log("nothing donated yet")
-			$('.remainderTree').css('background-color', '#bdbdbd')
-			$('.remainderTree').css('height', '100px')
-			$('.remainderTree').css('opacity', '0.2')
-			$('.remainderTree').hover( function (){
-				$('.remainderTree').css('opacity', '0.5')
-				}, function(){
-				$('.remainderTree').css('opacity', '0.2')
-			})	
+			$('.nomoneytree').css('visibility', 'visible')
 		}
 	}
 	//configure animate.css
@@ -75,12 +61,14 @@ script.
 	});
 	
 	$(document).ready(function() {
+		console.log("ready")
 		if ('#{data.donationAmount}' == 0) {
 			noMoneyFunction()
 			} else if ('#{data.donationAmount}' !== 0) {
 			remainderFunction()
 			}
 		$('.tahrees').animateCss('wobble')
+		$('.tree').css('height', '100px')
 	})
 
 
