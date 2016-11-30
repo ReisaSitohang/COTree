@@ -4,7 +4,7 @@ const router = express.Router()
 
 router.get( '/home', (req, res) => {
 	console.log("Someone's home")
-	let donation = 0
+	let donation = 364.5
 	let data = {
 	donationAmount: donation,
 	fulltree: donation/2,
