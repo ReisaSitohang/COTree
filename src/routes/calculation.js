@@ -83,7 +83,23 @@ router.get('/calculation', function (req, res) {
 	// ))
 })
 
-router.post('/calculation', function (req, res) {
+
+router.post('/kentekencalc', function (req, res) {
+	let kenteken = req.body.kenteken
+	console.log(kenteken)
+
+	db.kenteken.findOne({
+		where: {
+			kenteken: kenteken
+		}
+	}).then (car=>{
+	 	res.send({brandstofverbruik: car.brandstofverbruikcombi, brandstofsoort: car.brandstofomschrijving})
+	})
+})	
+
+
+
+router.post('/donation', function (req, res) {
 		// let user = req.session.db.user
 		// console.log(user)
 
@@ -92,12 +108,12 @@ router.post('/calculation', function (req, res) {
 
 		// console.log("Donation: "+req.body.donation)
 		// console.log("Kilometer: "+req.body.kilometer)
-			db.Kilometer.create({
-				kilometercount: req.body.kilometer
+		db.Kilometer.create({
+			kilometercount: req.body.kilometer
 				// userId: user.id
 			})
-			db.Donation.create({
-				donationamount: req.body.donation
+		db.Donation.create({
+			donationamount: req.body.donation
 				// userId: user.id
 			})
 	})			

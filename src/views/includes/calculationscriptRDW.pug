@@ -7,57 +7,49 @@ script.
 		let DieselCo2     = 3.230
 
 		//The 3 functions for the 3 ways to calculate the donation amount take place here
-		//This reads the JSON info from the API trough LICENCE PLATE
+		//This gets LICENCE PLATE info through the DB
 
 			function calcDonation1(km){
 				let checkbox = 0	
-				$.ajax({
-				    url: "https://opendata.rdw.nl/resource/8ys7-d773.json",
-				    type: "GET",
-				    data: {
-				      "$limit" : 100000,
-				      "$$app_token" : "v59yQXQfTY0aAJxxpv89zqd69"
-				    }
-				}).done(data=>{
-				  alert("Retrieved " + data.length + " records from the dataset!");
-				    for (let i = 0; i < data.length; i++){
-				    	if( data[i].kenteken === $("#Kenteken").val() ){
-				    		checkbox = 1
-				    		let brandstofsoort = data[i].brandstof_omschrijving
-				    		console.log(data[i].brandstofverbruik_gecombineerd)
-				    		let brandstofperkm = data[i].brandstofverbruik_gecombineerd/100
-				    		if ( brandstofsoort == "Benzine" ){
-				    			LitersBrandstof = km*brandstofperkm
-				    			Co2Vervuiling   = LitersBrandstof*BenzineCo2
-				    			Co2inBomen      = Co2Vervuiling/kgC02perboom
-				    			Donatie         = Co2inBomen*prijsperBoom
-				    			$("#donationAmount").empty()
-				    			$("#donationAmount").append("Co2 in kg: "+parseFloat(Co2Vervuiling).toFixed(0)+"<br> Donate €"+parseFloat(Donatie).toFixed(2)+"<br>to neutralize your carbon emmision :)")
-				    			$.post("/calculation", {donation: parseFloat(Donatie).toFixed(2), kilometer: km }, (res)=>{
-								console.log("Posting info to Node")
-								})
-				    		}
-			    			if ( brandstofsoort == "Diesel" ){
-				    			LitersBrandstof = km*brandstofperkm
-				    			Co2Vervuiling = LitersBrandstof*DieselCo2
-				    			Co2inBomen = Co2Vervuiling/kgC02perboom
-				    			Donatie = Co2inBomen*prijsperBoom
-				    			$("#donationAmount").empty()
-				    			$("#donationAmount").append("Co2 in kg: "+parseFloat(Co2Vervuiling).toFixed(0)+"<br> Donate: € "+parseFloat(Donatie).toFixed(2)+"<br>to neutralize your carbon emmision :)")
-				    			$.post("/calculation", {donation: parseFloat(Donatie).toFixed(2), kilometer: km }, (res)=>{
-								console.log("Posting info to Node")
-								})
-				    		}
-				    	}
-				   	}
+
+				$.post("/kentekencalc", { kenteken: $("#Kenteken").val() }, (res)=>{
+					checkbox = 1
+
+					let brandstofperkm =res.brandstofverbruik/100
+					let brandstofsoort =res.brandstofsoort
+
+		    		if ( brandstofsoort == "Benzine" ){
+		    			LitersBrandstof = km*brandstofperkm
+		    			Co2Vervuiling   = LitersBrandstof*BenzineCo2
+		    			Co2inBomen      = Co2Vervuiling/kgC02perboom
+		    			Donatie         = Co2inBomen*prijsperBoom
+		    			$("#donationAmount").empty()
+		    			$("#donationAmount").append("Co2 in kg: "+parseFloat(Co2Vervuiling).toFixed(0)+"<br> Donate €"+parseFloat(Donatie).toFixed(2)+"<br>to neutralize your carbon emmision :)")
+		    			$.post("/donationcalc", {donation: parseFloat(Donatie).toFixed(2), kilometer: km }, (res)=>{
+						console.log("Posting info to Node")
+						})
+		    		}
+	    			if ( brandstofsoort == "Diesel" ){
+		    			LitersBrandstof = km*brandstofperkm
+		    			Co2Vervuiling = LitersBrandstof*DieselCo2
+		    			Co2inBomen = Co2Vervuiling/kgC02perboom
+		    			Donatie = Co2inBomen*prijsperBoom
+		    			$("#donationAmount").empty()
+		    			$("#donationAmount").append("Co2 in kg: "+parseFloat(Co2Vervuiling).toFixed(0)+"<br> Donate: € "+parseFloat(Donatie).toFixed(2)+"<br>to neutralize your carbon emmision :)")
+		    			$.post("/donationcalc", {donation: parseFloat(Donatie).toFixed(2), kilometer: km }, (res)=>{
+						console.log("Posting info to Node")
+						})
+		    		}					
 				}).then( () =>{
 			    	if(checkbox == 0){
 			    		$("#donationAmount").empty()
 			    		$("#donationAmount").append("Sorry, can't find your licence plate nr: "+$("#Kenteken").val()+"<br></br> Please look through car types or fill in your gas mileage.")
 			    	}
 			    })
-			}					
+			  }
 
+
+			////USING API
 			//- 	$.getJSON("https://opendata.rdw.nl/resource/8ys7-d773.json", function(data) {
 			//- 		console.log(data)
 			//- 	    for (let i = 0; i < data.length; i++){
