@@ -1,7 +1,8 @@
 html
 	head
-		title Calculation
+		title Homepage
 		include includes/head.pug
+	include includes/homescript.pug
 	body
 		include includes/navbar.pug
 		main 
@@ -31,44 +32,5 @@ html
 						p.grey-text.text-lighten-4 Thank you for thinking of the environment!
 			div.footer-copyright
 				div.container  © 2016 Copyright COtree
-
-script.
-	//what to do with the remainder tree
-	var remainderFunction = function() {
-		//hide when there is no remainder
-		if('#{data.remainder}' == '0px') {
-			console.log("no remains")
-			//if there is fill the tree up to the percentage of the remainder amount
-		} else if ('#{data.remainder}' !== '0px') {
-			$('.remainderTree').css('height', '#{data.remainder}')
-			$('.remainderTree').css('visibility', 'visible')			
-		}
-	}
-	//what to display when no money has been donated yet
-	var noMoneyFunction = function () {
-		if('#{data.donationAmount}' == 0) {
-			console.log("nothing donated yet")
-			$('.nomoneytree').css('visibility', 'visible')
-		}
-	}
-	//configure animate.css
-	$.fn.extend({animateCss: function (animationName) {
-		var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
-			this.addClass('animated ' + animationName).one(animationEnd, function() {
-			$(this).removeClass('animated ' + animationName);
-			});
-		}
-	});
-	
-	$(document).ready(function() {
-		console.log("ready")
-		if ('#{data.donationAmount}' == 0) {
-			noMoneyFunction()
-			} else if ('#{data.donationAmount}' !== 0) {
-			remainderFunction()
-			}
-		$('.tahrees').animateCss('wobble')
-		$('.tree').css('height', '100px')
-	})
 
 
