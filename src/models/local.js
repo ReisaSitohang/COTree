@@ -1,48 +1,45 @@
-// const express = require('express');
-// const passport = require('passport');
-// const Strategy = require('passport-local').Strategy;
-// const db = require('./database');
-// const bCrypt = require('bcrypt');
+'use strict'
+const express       = require('express');
+const passport      = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
+const bcrypt        =  require('bcrypt-nodejs')
+const db            = require('./database');
+const init          = require('../config/initialize')
 
 
+module.exports = function(passport){
 
-// module.exports = (passport) => {
+	passport.use( new LocalStrategy ( {
+			 usernameField: 'email',
+             passwordField: 'password',  
+             passReqToCallback : true
+        },
 
-// 	passport.serializeUser( (user, done) {
-// 		done(null, user.id)
-// 	})
+        function(req, email, password, done) {
+        	db.user.find( { 
+                where: {
+                    'email' :  req.body.email 
+                }
+            }).then(
+        		function(user) {
+        			if (!user){
+                        console.log('User Not Found with email ');
+                        return done(null, false, req.flash('message', 'User Not found or Invalid Password.'));                 
+                    }
 
-// 	passport.deserializeUser((id, done) => {
-// 		User.findById(id, (err, user) => {
-// 			done(err, user)
-// 		})
-// 	})
-
-// 	passport.use('signup', new LocalStrategy({
-// 	  	usernameField : 'email',
-//         passwordField : 'password',
-//         passReqToCallback : true 
-// 	}, (req, email, password, done) => {
-// 		process.nextTick(() => {
-// 			User.findOne({'local.email: email'}, (err, user)=> {
-// 				if (err) return done(err)
-
-// 				if(user) {
-// 					return done(null, false, req.flash('signupMessage', 'Sorry, email is already takes.'))
-// 				} else {
-// 					let newUser = new User()
-// 					newUser.local.email = email
-// 					newUser.local.password = newUser.generateHash(password)
-// 					newUser.save((err)=> {
-// 						if(err)
-// 							throw err
-// 						return done(null, newUser)
-// 					})
-// 				}
-// 			})
-// 		})
-// 	})
-
-// 	)
-// }
-
+                    if (!validPw(user, password)){
+                        console.log('Invalid Password');
+                        return done(null, false, req.flash('message', 'User Not found or Invalid Password.')); // redirect back to login page
+                    }
+                    console.log('found user')
+                    return done(null, user);
+                },
+                function(err) {
+                	return done(err);
+                });
+        })
+    );
+    let validPw = function(user, password){
+        return bCrypt.compareSync(password, user.password);
+    }
+}

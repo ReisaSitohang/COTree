@@ -1,17 +1,18 @@
 'use strict'
 //Import modules
-const express    =  require( 'express' )
-const fs 		 = 	require( 'fs' )
-const app        =  express( )
-const bodyParser =  require('body-parser')
-const sequelize  =  require('sequelize')
-const session    =  require('express-session')
-const bcrypt     =  require('bcrypt-nodejs')
-const nodesass   = 	require('node-sass')
-const db         =  require('./models/database')
-const passport   =  require('passport')
-const Strategy   =  require('passport-facebook').Strategy
-let facebook     =  require('./models/facebook')
+const express         =  require( 'express' )
+const fs 		      =  require( 'fs' )
+const app             =  express( )
+const bodyParser      =  require('body-parser')
+const sequelize       =  require('sequelize')
+const session         =  require('express-session')
+const bcrypt          =  require('bcrypt-nodejs')
+const nodesass        = require('node-sass')
+const passport        =  require('passport')
+const Strategy        =  require('passport-facebook').Strategy
+const LocalStrategy   =  require('passport-local').Strategy
+let facebook          =  require('./models/facebook')
+
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -57,8 +58,7 @@ nodesass.render({
 let homeRouter 		  = require( __dirname + '/routes/home' )
 let profile 		  = require( __dirname + '/routes/profile' )
 let calculationRouter = require( __dirname+'/routes/calculation' )
-let donate = require( __dirname+'/routes/donate' )
-let login = require(__dirname + '/routes/login' )
+let routes            = require(__dirname + '/routes/routes' )
 
 
 
@@ -66,8 +66,8 @@ app.use('/', homeRouter )
 
 app.use('/', profile )
 app.use('/', calculationRouter )
-app.use('/', login)
-app.use('/', donate)
+app.use('/', routes)
+
 
 
 //Set port

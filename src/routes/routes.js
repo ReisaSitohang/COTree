@@ -12,6 +12,7 @@ const local                       = require('../models/local');
 const facebook                    = require('../models/facebook')
 
 
+
 router.use(session({
 	secret: 'oh wow very secret much security',
 	resave: true,
@@ -77,23 +78,22 @@ router.route('/donate')
 //////////////////////
 
 router.route('/register')
-.get((req,res)=> {
-	res.render('register')
-})
-.post((req,res)=> {
-	console.log(req.body)
-	bcrypt.hash(req.body.password, null, null, (err,hash) =>{
-		db.user.create({
-			name: req.body.first_name,
-			lastname: req.body.last_name,
-			email:req.body.email,
-			password: hash
-		}).then(()=>{
-			res.redirect('/?message=' +encodeURIComponent('Account created, you can now log-in'))
-		})
-	})
-})
-
+    .get((req,res)=> {
+        res.render('register')
+    })
+    .post((req,result)=> {
+        console.log(req.body)
+        bcrypt.hash(req.body.password, null, null, (err,hash) =>{
+            db.user.create({
+                name: req.body.first_name,
+                lastname: req.body.last_name,
+                email:req.body.email,
+                password: hash
+            }).then(()=>{
+                result.redirect('/?message=' +encodeURIComponent('Account created, you can now log-in'))
+            })
+        })
+    })
 
 
 module.exports = router

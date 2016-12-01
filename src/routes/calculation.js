@@ -1,5 +1,4 @@
 'use strict'
-//__________Import Modules
 const express    =  require( 'express' )
 const router     =  express.Router(  )
 const session    =  require( 'express-session' )
@@ -10,10 +9,10 @@ const passport   = require('passport')
 const LocalStrategy = require('passport-local').Strategy;
 
 
+
 router.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true
 })); 
-
 
 
 //Define database tables/model
@@ -58,7 +57,6 @@ db.connection.sync( {'force': false} ).then(
 	},
 	(err) => { console.log('Synchronize failed: ' + err) } 
 	)
-
 
 
 
