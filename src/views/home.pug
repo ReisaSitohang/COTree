@@ -2,31 +2,43 @@ html
 	head
 		title Homepage
 		include includes/head.pug
-	include includes/homescript.pug
+		include includes/homescript.pug
 	body
 		include includes/navbar.pug
-		main 
-			div.container
-				div.row
-					div#kms
-
+		div#homeheader.valign-wrapper
+				div.row.valign
+					h1.center.white-text Welcome
+		main
 			div.container 
 				div.row
-					div#forest 
-						h4#treetext 
-						-	for (var x=1, y= x + 'tree'; x <= data.fulltree; x++) 
-								div.tahrees.treecontainer
-									div(id=y, class='tree')
+					div#homecard.card
+						div.card-content
+							div#kms
+								h4#kmtext Helloo you have driven somewhat KM's!
+								div#slider.animated.slideOutRight
+									div#bouncer.animated.bounce
+										div#cartext
+										div#smoke
+											img#cloud2.animated.pulse(src='/images/cloud2.png')
+											img#cloud1.animated.pulse(src='/images/cloud1.png')
+										div#car
+											img#carpic(src='/images/car2.png')
+							div.row
+							div#forest
+								h4#treetext
+								-	for (var x=1, y= x + 'tree'; x <= data.fulltree; x++) 
+										div.tahrees.treecontainer
+											div(id=y, class='tree')
+												div
+													img(src='/images/tree2.png')
+								div.tahrees.remainderTreecontainer
+									div.remainderTree
 										div
 											img(src='/images/tree2.png')
-						div.tahrees.remainderTreecontainer
-							div.remainderTree
-								div
-									img(src='/images/tree2.png')
-						div.tahrees.remainderTreecontainer
-							div.nomoneytree
-								div
-									img(src='/images/tree2.png')
+								div.tahrees.remainderTreecontainer
+									div.nomoneytree
+										div
+											img(src='/images/tree2.png')
 		footer.page-footer
 			div.container
 				div.row

@@ -3,8 +3,9 @@ script.
 	var remainderFunction = function() {
 		if('#{data.remainder}' == '0px') {
 			console.log("no remains")
-			if ('#data.fulltree' == 1) {
-				$('#treetext').html("Check out the tree you planted!")
+				console.log('#data.fulltree')
+			if ('#{data.fulltree}' == 1) {
+				$('#treetext').html("Woohoo, you have a tree!")
 				}
 			else {
 				$('#treetext').html("Check out your trees!")

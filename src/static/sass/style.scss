@@ -31,17 +31,96 @@ body {
 	display: flex;
 	min-height: 100vh;
 	flex-direction: column;
-	position: relative;
 }
 
 main {
 	flex: 1 0 auto;
 }
+#homeheader {
+	min-height: 300px;
+	background-image: url('/images/Leaves.jpg');
+	background-position: center;
+}
+#homecard {
+	margin-top: -60px;
+}
+
+#bouncer {
+	animation-iteration-count: infinite;
+	animation-duration: 0.2s;
+	animation-delay: 1s;
+	margin-right: 0;
+	max-width: 250px;
+}
+#slider {
+	animation-iteration-count: 1;
+	animation-duration: 10s;
+	margin-right: 0;
+	max-width: 250px;
+}
+
+#car {
+	display: inline-block;
+	margin-right: 0px;
+	img#carpic {
+		max-width: 100px;
+	}
+}
+#smoke {
+	display: inline-block;
+	img#cloud1 {
+		max-width: 20px;
+		margin-right: 5px;
+		margin-bottom: 2px;
+		animation-duration: 2s;
+		animation-delay: 1s;
+		animation-iteration-count: infinite;
+	}
+	img#cloud2 {
+		max-width: 30px;
+		margin-right: 5px;
+		margin-bottom: 7px;
+		animation-duration: 2s;
+		animation-delay: 2s;
+		animation-iteration-count: infinite;
+	}
+}
+
+@keyframes bounce {
+  40%, 43% {
+    transform: translate3d(0, -2px, 0);
+  }
+
+  70% {
+    transform: translate3d(0, -1px, 0);
+  }
+
+  90% {
+    transform: translate3d(0,-0.5px,0);
+  }
+}
+
+@keyframes pulse {
+  50% {
+    transform: scale3d(1.2, 1.2, 1.2);
+  }
+}
+
+@keyframes slideOutRight {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    visibility: visible;
+    transform: translate3d(250%, 0, 0);
+  }
+}
 
 #forest {
-	position: absolute;
-	bottom: 142px;
+	position: relative;
 	background-color: transparent;
+	background-position: cover;
 }
 .treecontainer {
 	position: relative;
