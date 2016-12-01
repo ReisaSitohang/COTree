@@ -9,6 +9,7 @@
   "author": "Reisa, Manon, Daniel",
   "license": "MIT",
   "dependencies": {
+    "animate.css": "^3.5.2",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.15.2",
     "express": "^4.14.0",

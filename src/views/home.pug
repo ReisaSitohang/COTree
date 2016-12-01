@@ -1,37 +1,50 @@
 html
 	head
-		title Calculation
+		title Homepage
 		include includes/head.pug
-		include includes/calculationscriptrdw.pug				
+		include includes/homescript.pug
 	body
 		include includes/navbar.pug
-		main 
-			div.container helloooo #{data.remainder}
-				div#forest 
-					h3 omg them trees!
-					-	for (var x=1; x < data.fulltree; x++)
-							div.treecontainer
-								div.tree
-									div
-										img(src='/images/tree2.png')
-					div.treecontainer
-						div.remainderTree
-							div
-							img(src='/images/tree2.png')
-
+		div#homeheader.valign-wrapper
+				div.row.valign
+					h1.center.white-text Welcome
+		main
+			div.container 
+				div.row
+					div#homecard.card
+						div.card-content
+							div#kms
+								h4#kmtext Helloo you have driven somewhat KM's!
+								div#slider.animated.slideOutRight
+									div#bouncer.animated.bounce
+										div#cartext
+										div#smoke
+											img#cloud2.animated.pulse(src='/images/cloud2.png')
+											img#cloud1.animated.pulse(src='/images/cloud1.png')
+										div#car
+											img#carpic(src='/images/car2.png')
+							div.row
+							div#forest
+								h4#treetext
+								-	for (var x=1, y= x + 'tree'; x <= data.fulltree; x++) 
+										div.tahrees.treecontainer
+											div(id=y, class='tree')
+												div
+													img(src='/images/tree2.png')
+								div.tahrees.remainderTreecontainer
+									div.remainderTree
+										div
+											img(src='/images/tree2.png')
+								div.tahrees.remainderTreecontainer
+									div.nomoneytree
+										div
+											img(src='/images/tree2.png')
 		footer.page-footer
 			div.container
 				div.row
 					div.col-16-s12
-						h5.white-text Footer content
-						p.grey-text.text-lighten-4 You can use rows and colums here to organize your footer content.
+						p.grey-text.text-lighten-4 Thank you for thinking of the environment!
 			div.footer-copyright
 				div.container  © 2016 Copyright COtree
-
-script.
-	$(document).ready(function() {
-		$('.remainderTree').css('height', '#{data.remainder}')
-		//$('div.remainderTree').css('height', '50%')
-	})
 
 
