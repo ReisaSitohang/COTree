@@ -1,19 +1,17 @@
-const login = require('./login');
-const signup = require('./signup');
-const db = require('../app/models/database');
+'use strict'
+const passport = require('passport');
+const db = require('../models/database');
 
 module.exports = function(passport){
-    // Serialize sessions
 
     passport.serializeUser(function(user, done) {
     	done(null, user.id);
     });
 
     passport.deserializeUser(function(id, done) {
-// changed from db.mainuser 
-    	db.subuser.find( { 
+    	db.user.find( { 
             where: { 
-                id: id
+                email: req.body.email
             }
         }).then(
     		function(user) { 
@@ -25,8 +23,6 @@ module.exports = function(passport){
     	);
     });
 
-    // Setting up Passport Strategies for Login and SignUp/Registration
     login(passport);
-    signup(passport);
 
 }
