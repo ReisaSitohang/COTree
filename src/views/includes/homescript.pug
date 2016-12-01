@@ -1,13 +1,24 @@
 script.
 	//what to do with the remainder tree
 	var remainderFunction = function() {
-		//hide when there is no remainder
 		if('#{data.remainder}' == '0px') {
 			console.log("no remains")
-			//if there is fill the tree up to the percentage of the remainder amount
+			if ('#data.fulltree' == 1) {
+				$('#treetext').html("Check out the tree you planted!")
+				}
+			else {
+				$('#treetext').html("Check out your trees!")
+				}
+			//if not 0px fill the tree up to the remainder amount and show remaindertree
 		} else if ('#{data.remainder}' !== '0px') {
 			$('.remainderTree').css('height', '#{data.remainder}')
-			$('.remainderTree').css('visibility', 'visible')			
+			$('.remainderTree').css('visibility', 'visible')
+			if ('#data.fulltree' < 1) {
+				$('#treetext').html("Looks like you need to donate more to plant a full tree")
+				}
+			else {
+				$('#treetext').html("Donate more to grow your forest")
+				}	
 		}
 	}
 	//what to display when no money has been donated yet
@@ -15,8 +26,10 @@ script.
 		if('#{data.donationAmount}' == 0) {
 			console.log("nothing donated yet")
 			$('.nomoneytree').css('visibility', 'visible')
+			$('#treetext').html("Looks like you don't have any trees yet")
 		}
 	}
+
 	//configure animate.css
 	$.fn.extend({animateCss: function (animationName) {
 		var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
@@ -25,7 +38,7 @@ script.
 			});
 		}
 	});
-	
+
 	$(document).ready(function() {
 		console.log("ready")
 		if ('#{data.donationAmount}' == 0) {

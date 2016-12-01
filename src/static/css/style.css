@@ -4,6 +4,9 @@
 nav, footer.page-footer {
   background-color: #512DA8; }
 
+footer.page-footer {
+  margin-top: 0px; }
+
 .brand-logo {
   padding-left: 10px !important;
   padding-top: 3px !important; }
@@ -21,14 +24,16 @@ main {
   flex: 1 0 auto; }
 
 #forest {
-  position: relative;
-  bottom: 0; }
+  position: absolute;
+  bottom: 142px;
+  background-color: transparent; }
 
 .treecontainer, .remainderTreecontainer {
   position: relative;
   display: inline-block;
   height: 100px;
-  width: 84px; }
+  width: 84px;
+  background-color: transparent; }
 
 .tree {
   position: absolute;

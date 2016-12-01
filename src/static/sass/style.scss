@@ -15,6 +15,10 @@ nav, footer.page-footer {
 	background-color: $primary-color-dark;
 }
 
+footer.page-footer {
+	margin-top: 0px
+}
+
 .brand-logo{
 	padding-left: 10px !important;
 	padding-top: 3px !important;
@@ -35,14 +39,16 @@ main {
 }
 
 #forest {
-	position: relative;
-	bottom: 0;
+	position: absolute;
+	bottom: 142px;
+	background-color: transparent;
 }
 .treecontainer {
 	position: relative;
 	display: inline-block;
 	height: 100px;
 	width: 84px;
+	background-color: transparent;
 }
 .remainderTreecontainer{
 	@extend .treecontainer

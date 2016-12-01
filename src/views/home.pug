@@ -6,17 +6,19 @@ html
 	body
 		include includes/navbar.pug
 		main 
+			div.container
+				div.row
+					div#kms
+
 			div.container 
 				div.row
 					div#forest 
-						h3#test omg them trees!
-						-	for (var x=1, y= x + 'tree'; x < data.fulltree; x++) 
+						h4#treetext 
+						-	for (var x=1, y= x + 'tree'; x <= data.fulltree; x++) 
 								div.tahrees.treecontainer
 									div(id=y, class='tree')
 										div
 											img(src='/images/tree2.png')
-							
-
 						div.tahrees.remainderTreecontainer
 							div.remainderTree
 								div
