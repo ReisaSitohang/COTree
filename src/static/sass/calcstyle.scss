@@ -3,7 +3,7 @@
 	border-color: lightgreen;
 	border-radius: 0px 0px 30px 30px;
 	padding: 20px;
-	min-height: 65%;
+	min-height: 500px;
 	background-image: url("");
 	background-repeat: repeat-x;
 }
@@ -91,4 +91,10 @@ p#cargasInfo {
 	text-align: center;
 	margin: 0;
 	font-size: 10px;
+}
+
+div.loadbar {
+	min-height: 35px;
+	margin-top: 10px;
+	margin-left: 20px;
 }
