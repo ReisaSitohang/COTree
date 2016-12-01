@@ -54,13 +54,15 @@ nodesass.render({
 })
 
 //Setting Routes
-let homeRouter 		  = require( __dirname + '/routes/home' )
+
+let profile 		  = require( __dirname + '/routes/profile' )
 let calculationRouter = require( __dirname+'/routes/calculation' )
 let donate = require( __dirname+'/routes/donate' )
 let login = require(__dirname + '/routes/login' )
 
 
-app.use('/', homeRouter )
+
+app.use('/', profile )
 app.use('/', calculationRouter )
 app.use('/', login)
 app.use('/', donate)
