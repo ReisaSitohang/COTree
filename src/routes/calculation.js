@@ -65,22 +65,6 @@ router.get('/calculation', function (req, res) {
 
 		res.render('calculationrdw')
 
-		// console.log(req.user.username)
-	// 	passport.use(new LocalStrategy(
-	//   function(username, password, done) {
-	//     User.findOne({ username: username }, function (err, user) {
-	//     	console.log(user)
-	//       if (err) { return done(err); }
-	//       if (!user) {
-	//         return done(null, false, { message: 'Incorrect username.' });
-	//       }
-	//       if (!user.validPassword(password)) {
-	//         return done(null, false, { message: 'Incorrect password.' });
-	//       }
-	//       return done(null, user);
-	//     })
-	//   }
-	// ))
 })
 
 
@@ -94,12 +78,15 @@ router.post('/kentekencalc', function (req, res) {
 		}
 	}).then (car=>{
 	 	res.send({brandstofverbruik: car.brandstofverbruikcombi, brandstofsoort: car.brandstofomschrijving})
+	}).catch( err=>{
+		console.log("Cannot find")
+		res.send({err: err})
 	})
 })	
 
 
 
-router.post('/donation', function (req, res) {
+router.post('/donationcalc', function (req, res) {
 		// let user = req.session.db.user
 		// console.log(user)
 
