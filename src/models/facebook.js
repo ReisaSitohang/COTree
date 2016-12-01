@@ -18,14 +18,15 @@ passport.use('facebook', new Strategy({
   console.log(profile)
 
 findOrCreateUser = () => {
-  db.user.find({where: {'fbid' : profile.id}}).then((user)=> {
+
+  db.fbuser.find({where: {'fbid' : profile.id}}).then((user)=> {
     if (user) {
       console.log('User already exists with this username')
       return
     } else {
-      console.log(db.user)
+      console.log(db.fbuser)
       console.log('The user cannot be found, creating new one')
-      db.user.create({
+      db.fbuser.create({
         'fbid': profile.id,
         'firstname': profile.name.givenName,
         'lastname': profile.name.familyName,
@@ -55,7 +56,7 @@ callback(null, sessionUser);
 
 passport.deserializeUser(function(id, done) {
    var accessToken = id.accessToken;
-     db.mainuser.find( { 
+     db.fbuser.find( { 
        where: {
            fbid: id.id
          }

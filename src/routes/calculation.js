@@ -32,6 +32,7 @@ db.Kilometer = db.connection.define('kilometer', {
 	kilometercount: sequelize.INTEGER
 })
 
+
 db.kenteken = db.connection.define('kenteken', {
 	kenteken: sequelize.STRING,
 	brandstofomschrijving: sequelize.STRING,
@@ -49,6 +50,7 @@ db.user.hasMany ( db.Kilometer )
 db.Kilometer.belongsTo ( db.user )
 
 //Sync DB
+
 db.connection.sync( {'force': false} ).then(
 
 	() => { 
@@ -101,6 +103,19 @@ router.post('/donationcalc', function (req, res) {
 			})
 		db.Donation.create({
 			donationamount: req.body.donation
+				// userId: user.id
+			})
+	})			
+
+router.post('/calculation', function (req, res) {
+		// console.log("Donation: "+req.body.donation)
+		// console.log("Kilometer: "+req.body.kilometer)
+			db.Kilometer.create({
+				kilometercount: req.body.kilometer
+				// userId: user.id
+			})
+			db.Donation.create({
+				donationamount: req.body.donation
 				// userId: user.id
 			})
 	})			
