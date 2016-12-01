@@ -33,9 +33,13 @@
 #chooseLicence.btn {
 	border-radius: 30px 0px 0px 0px;
 	width: 100%;
-	@media #{$small-and-down} {
-		border-color: red;
+}
+
+@media #{$small-and-down} {
+	#chooseLicence.btn {
 		border-radius: 30px 30px 30px 30px;
+		border: solid;
+		border-color: red;
 		width: 100%;
 	}
 }
