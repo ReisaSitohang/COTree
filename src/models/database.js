@@ -1,3 +1,4 @@
+'use strict'
 // require modules
 const sequelize = require( 'sequelize' )
 
@@ -13,15 +14,22 @@ db.connection       =  new sequelize('cotree', process.env.POSTGRES_USER, proces
 						dialect: 'postgres'
 					});
 
-db.user = db.connection.define('user', {
+db.fbuser = db.connection.define('fbuser', {
 	fbid: sequelize.BIGINT,
 	firstname: {type: sequelize.STRING, unique: true},
 	lastname: {type: sequelize.STRING, unique: true},
 	email: {type: sequelize.STRING, unique: true}
 })
 
+db.user = db.connection.define('user', {
+	firstname: {type: sequelize.STRING, unique: true},
+	lastname: {type: sequelize.STRING, unique: true},
+	email: {type: sequelize.STRING, unique: true},
+	password: sequelize.STRING 
+})
 
-db.conn.sync( {'force': true} ).then(
+
+db.connection.sync( {'force': true} ).then(
 
 	() => { 
 		console.log ( 'Synchronized' )

@@ -8,43 +8,31 @@ html
 		main
 			h3 Calculate your ride
 			form
-				label Click on the vehicle most like yours
-				div.row.cars
-					div.col.m1.offset-m1.col.s10.offset-s1
-						img#carS.car(src="./images/carS.png")
-					div.col.m1.col.s10.offset-s1
-						img#carM.car(src="./images/carM.png")
-					div.col.m1.col.s10.offset-s1
-						img#carL.car(src="./images/carL.png")
-				.input-field.col.s12
-				label Choose you fuel type
-				select
-					option(value='', disabled='', selected='') Diesel or Benzine
-					option(value='1') Benzine
-					option(value='2') Diesel
-				br
-				label Distance of your car-ride
-				input#Kilometers(type='number', placeholder='distance in kilometers')
-				br
-				input#search.btn(type='button', value='Go!')
-				#donationAmount
 				div.row.buttons
 					div.col.m1.offset-m1.buttongroup.col.s10.offset-s1
 						input#chooseLicence.btn(type='button', value="Licence")
-					div.col.m1.buttongroup.col.s10.offset-s1
+					div.col.m2.buttongroup.col.s10.offset-s1
 						input#chooseIknow.btn(type='button', value="Mileage")
 					div.col.m1.buttongroup.col.s10.offset-s1
 						input#chooseCartype.btn(type='button', value="Car")
-				div.row
-					div#calculationArea.col.m3.offset-m1.col.s10.offset-s1
+				div.row#calculationAppend
+					#calculationArea.col.m4.offset-m1.col.s10.offset-s1
 						form
 							label Please fill in your licence number and your distance in kilometers
-							input#Kenteken(type='text', value="6KVH13")
+							input#Kenteken(type='text', value='91SFBH')
 							br
-							input#Kilometers(type='number', placeholder="distance in kilometers")
+							input#Kilometers(type='number', placeholder='distance in kilometers')
 							br
-							input#search.btn(type='button', value="Go!")
-						div#donationAmount
+							input#search.btn(type='button', value='Go!')
+							p tip: If you don't know your licence plate number,<br> choose another option at the tabs above.
+					#donationArea.col.m5.offset-m1.col.s10.offset-s1
+						#donationTextBox.col.s12
+							br
+							h5#donationAmount
+						.col.s12
+							input#donatenowBtn.btn(type='button', value='Donate total now')
+							input#donatelaterBtn.btn(type='button', value='Save to your total')
+						
 	include includes/footer.pug
 
 

@@ -2,7 +2,7 @@
 const express = require( 'express' )
 const router = express.Router()
 
-router.get( '/home', (req, res) => {
+router.get( '/profile', (req, res) => {
 	console.log("Someone's home")
 	let data = {
 	donationAmount: 7,
@@ -14,7 +14,7 @@ router.get( '/home', (req, res) => {
 	}
 	console.log(data.remainder)
 	// get user info
-	res.render('home', {data: data})
+	res.render('profile', {data: data})
 })
 
 module.exports = router
