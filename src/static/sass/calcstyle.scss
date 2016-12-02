@@ -21,7 +21,7 @@ h1{
 	border-color: #4b9701;
 	border-radius: 0px 0px 30px 30px;
 	padding: 20px;
-	min-height: 450px;
+	min-height: 520px;
 	background-image: url("");
 	background-repeat: repeat-x;
 }
@@ -165,19 +165,7 @@ div.row#treeloader{
 }
 
 main{ 
-background: linear-gradient(144deg, #ecf0d5, #adbaf0, #000000);
-background-size: 600% 600%;
-
-animation: AnimationName 17s ease infinite;
-
-@keyframes AnimationName { 
-    0%{background-position:0% 62%}
-    50%{background-position:100% 39%}
-    100%{background-position:0% 62%}
-}
-// background: #BE93C5; /* fallback for old browsers */
-// background: -webkit-linear-gradient(to bottom, beige , lightblue); Chrome 10-25, Safari 5.1-6
-// background: linear-gradient(to bottom, beige , lightblue); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */        
+background-color: beige;
 }
 
 
