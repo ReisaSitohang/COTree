@@ -7,23 +7,29 @@ const bodyParser      =  require('body-parser')
 const sequelize       =  require('sequelize')
 const session         =  require('express-session')
 const bcrypt          =  require('bcrypt-nodejs')
-const nodesass        = require('node-sass')
+const nodesass        =  require('node-sass')
 const passport        =  require('passport')
 const Strategy        =  require('passport-facebook').Strategy
 const LocalStrategy   =  require('passport-local').Strategy
-let facebook          =  require('./models/facebook')
+const cookieParser    =  require('cookie-parser')
 
+app.use (express.static(__dirname + '/static'))
+app.use(bodyParser.urlencoded({     
+  extended: true
+})); 
 
+app.use(cookieParser())
+app.use(session({
+	secret: 'oh wow very secret much security',
+	resave: true,
+	saveUninitialized: false
+}));
 app.use(passport.initialize());
 app.use(passport.session());
 
-//Set views
 app.set('views', './views')
 app.set('view engine', 'pug')
 
-//Use static folder
-
-app.use (express.static(__dirname + '/static'))
 
 nodesass.render({
 	file: __dirname + '/static/sass/materialize.scss',

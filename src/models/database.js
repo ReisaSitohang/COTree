@@ -1,6 +1,7 @@
 'use strict'
 // require modules
 const sequelize = require( 'sequelize' )
+const bcrypt = require('bcrypt-nodejs')
 
 // Container object
 let db = {
@@ -11,14 +12,15 @@ let db = {
 // Initiate database 
 db.connection       =  new sequelize('cotree', process.env.POSTGRES_USER, process.env.POSTGRES_PASSWORD,{
 						host: 'localhost',
-						dialect: 'postgres'
+						dialect: 'postgres',
+						// dialectOptions: {supportBigNumbers: true}
 					});
 
 
 // facebook user
 
-db.fbuser = db.connection.define('fbuser', {
-	fbid: sequelize.BIGINT,
+db.fbuser = db.connection.define('fbuser', {	
+	fbid: {type: sequelize.BIGINT, unique: true},
 	firstname: {type: sequelize.STRING, unique: true},
 	lastname: {type: sequelize.STRING, unique: true},
 	email: {type: sequelize.STRING, unique: true}
@@ -38,7 +40,7 @@ db.Donation = db.connection.define('donation', {
 })
 
 db.Kilometer = db.connection.define('kilometer', {
-	kilometercount: sequelize.INTEGER
+	kilometercount: sequelize.BIGINT
 })
 
 //Define DB structure
@@ -61,10 +63,20 @@ db.Kilometer.belongsTo ( db.fbuser )
 
 
 
-db.connection.sync( {'force': true} ).then(
+db.connection.sync( {force: true} ).then(
 
 	() => { 
 		console.log ( 'Synchronized' )
+		bcrypt.hash('mentor', null, null, (err,hash) =>{
+		db.user.create({
+			name: "Mentor",
+			lastname: "Mentor",
+			email:"mentor@mentor.mentor",
+			password: hash
+		}).then(()=>{
+			console.log( 'Mentor said mentor, and there was mentor. #bible' )
+		})
+	})
 	},
 	(err) => { console.log('Synchronize failed: ' + err) } 
 	)
