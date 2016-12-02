@@ -158,8 +158,7 @@ footer {
   z-index: 11;
   /* 1px higher than the overlay layer */ }
   .login-form h1 {
-    color: white;
-    margin-left: 80px; }
+    color: white; }
 
 .tahrees {
   animation-duration: 2s;

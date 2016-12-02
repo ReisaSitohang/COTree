@@ -86,7 +86,9 @@ div#donationTextBox{
 #carS:active , #carM:active , #carL:active  {
 	opacity: 1;
 }
-
+#cars{
+	height: 30px;
+}
 p#cargasInfo {
 	text-align: center;
 	margin: 0;
