@@ -39,10 +39,6 @@ router.route('/login')
 
 router.route('/auth/facebook')
 	.get(passport.authenticate('facebook', {scope: ['public_profile', 'email']}))
-<<<<<<< 8bc0821107e9c91841d740fc3b9977955c617d8f
-=======
-
->>>>>>> Sloppily added work
 
 router.route('/auth/facebook/callback')
 	.get(passport.authenticate('facebook', {

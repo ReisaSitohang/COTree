@@ -1,15 +1,12 @@
 .img {
   max-width: 100%; }
 
-<<<<<<< 8bc0821107e9c91841d740fc3b9977955c617d8f
 nav, footer.page-footer {
   background-color: #512DA8; }
 
 footer.page-footer {
   margin-top: 0px; }
 
-=======
->>>>>>> Sloppily added work
 .brand-logo {
   padding-left: 10px !important;
   padding-top: 3px !important; }
@@ -22,8 +19,7 @@ body {
   min-height: 100vh;
   flex-direction: column; }
 
-<<<<<<< 8bc0821107e9c91841d740fc3b9977955c617d8f
-main {
+#main {
   flex: 1 0 auto; }
 
 #homeheader {
@@ -88,11 +84,6 @@ main {
   to {
     visibility: visible;
     transform: translate3d(250%, 0, 0); } }
-=======
-#main {
-  flex: 1 0 auto;
-  position: relative; }
->>>>>>> Sloppily added work
 
 #forest {
   position: relative;
@@ -135,7 +126,6 @@ footer {
     position: absolute;
     bottom: 0; }
 
-<<<<<<< 8bc0821107e9c91841d740fc3b9977955c617d8f
 .nomoneytree {
   position: absolute;
   visibility: hidden;
@@ -151,8 +141,6 @@ footer {
     position: absolute;
     bottom: 0; }
 
-=======
->>>>>>> Sloppily added work
 .background {
   height: 100%;
   background-image: url("../images/background.jpg");
@@ -172,11 +160,8 @@ footer {
   .login-form h1 {
     color: white;
     margin-left: 80px; }
-<<<<<<< 8bc0821107e9c91841d740fc3b9977955c617d8f
 
 .tahrees {
   animation-duration: 2s;
   animation-delay: 1s;
   animation-iteration-count: 1; }
-=======
->>>>>>> Sloppily added work
