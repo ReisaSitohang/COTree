@@ -35,6 +35,15 @@ db.user = db.connection.define('user', {
 })
 
 
+db.kenteken = db.connection.define('kenteken', {
+	kenteken: sequelize.STRING,
+	brandstofomschrijving: sequelize.STRING,
+	brandstofverbruikcombi: sequelize.DECIMAL,
+	}, {
+    timestamps: false
+})
+
+
 db.Donation = db.connection.define('donation', {
 	donationamount: sequelize.DECIMAL
 })
@@ -63,7 +72,7 @@ db.Kilometer.belongsTo ( db.fbuser )
 
 
 
-db.connection.sync( {force: false} ).then(
+db.connection.sync( {force: true} ).then(
 
 	() => { 
 		console.log ( 'Synchronized' )
