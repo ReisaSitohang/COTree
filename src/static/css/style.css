@@ -1,15 +1,12 @@
 .img {
   max-width: 100%; }
 
-<<<<<<< HEAD
 nav, footer.page-footer {
   background-color: #512DA8; }
 
 footer.page-footer {
   margin-top: 0px; }
 
-=======
->>>>>>> d7d5cc46fb4efc9d29296ef120b959876ed5b16f
 .brand-logo {
   padding-left: 10px !important;
   padding-top: 3px !important; }
@@ -23,7 +20,6 @@ body {
   flex-direction: column; }
 
 #main {
-<<<<<<< HEAD
   flex: 1 0 auto; }
 
 #homeheader {
@@ -88,10 +84,6 @@ body {
   to {
     visibility: visible;
     transform: translate3d(250%, 0, 0); } }
-=======
-  flex: 1 0 auto;
-  position: relative; }
->>>>>>> d7d5cc46fb4efc9d29296ef120b959876ed5b16f
 
 #forest {
   position: relative;
@@ -134,7 +126,6 @@ footer {
     position: absolute;
     bottom: 0; }
 
-<<<<<<< HEAD
 .nomoneytree {
   position: absolute;
   visibility: hidden;
@@ -150,8 +141,6 @@ footer {
     position: absolute;
     bottom: 0; }
 
-=======
->>>>>>> d7d5cc46fb4efc9d29296ef120b959876ed5b16f
 .background {
   height: 100%;
   background-image: url("../images/background.jpg");
@@ -171,11 +160,8 @@ footer {
   .login-form h1 {
     color: white;
     margin-left: 80px; }
-<<<<<<< HEAD
 
 .tahrees {
   animation-duration: 2s;
   animation-delay: 1s;
   animation-iteration-count: 1; }
-=======
->>>>>>> d7d5cc46fb4efc9d29296ef120b959876ed5b16f
