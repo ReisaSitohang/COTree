@@ -16,50 +16,6 @@ router.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 
 
 
-//Define database tables/model
-db.user = db.connection.define('user', {
-	fbid: sequelize.BIGINT,
-	firstname: {type: sequelize.STRING, unique: true},
-	lastname: {type: sequelize.STRING, unique: true},
-	email: {type: sequelize.STRING, unique: true}
-})
-
-db.Donation = db.connection.define('donation', {
-	donationamount: sequelize.DECIMAL
-})
-
-db.Kilometer = db.connection.define('kilometer', {
-	kilometercount: sequelize.INTEGER
-})
-
-
-db.kenteken = db.connection.define('kenteken', {
-	kenteken: sequelize.STRING,
-	brandstofomschrijving: sequelize.STRING,
-	brandstofverbruikcombi: sequelize.DECIMAL,
-	}, {
-    timestamps: false
-})
-
-//Define DB structure
-
-db.user.hasMany ( db.Donation )
-db.Donation.belongsTo ( db.user )
-
-db.user.hasMany ( db.Kilometer )
-db.Kilometer.belongsTo ( db.user )
-
-//Sync DB
-
-db.connection.sync( {'force': false} ).then(
-
-	() => { 
-		console.log ( 'Synchronized' )
-	},
-	(err) => { console.log('Synchronize failed: ' + err) } 
-	)
-
-
 //_________routes
 router.get('/calculation', function (req, res) {
 
