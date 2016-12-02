@@ -6,15 +6,15 @@ html
 	body
 		include includes/navbar.pug
 		div#homeheader.valign-wrapper
-				div.row.valign
-					h1.center.white-text Welcome
+			div.row.valign
+				h1.center.white-text Welcome
 		main
-			div.container 
+			div#statsection.container 
 				div.row
-					div#homecard.card
-						div.card-content
-							div#kms
-								h4#kmtext Helloo you have driven somewhat KM's!
+					div.col.l5
+						div#homecard.card
+							div.card-content.center
+								h5#stats.center Your driving and compensation statistics
 								div#slider.animated.slideOutRight
 									div#bouncer.animated.bounce
 										div#cartext
@@ -23,22 +23,40 @@ html
 											img#cloud1.animated.pulse(src='/images/cloud1.png')
 										div#car
 											img#carpic(src='/images/car2.png')
-							div.row
-							div#forest
-								h4#treetext
+								div#kms.container
+									div.row
+										p.flowtext You have driven ... km's
+										p.flowtext Which amounts to .. kg CO2
+								div.divider
+								div#cash.container
+									div.row
+										div#euro
+											img#europic(src='/images/euro.png')
+					div.col.l5.offset-l1
+						div#homecard.card
+							div.card-content
+								div#right.col.l6
+									h5.center Your donations
+			div#resultsection.valign-wrapper
+				div.row.valign
+					h1.center.white-text Your impact
+			div.container
+				div.row
+					div.col.l10.offset-l1
+						div#treecard.card
+							div#forest.center
+								h5 A visualisation of what we can do with your donation.
+								p#treetext
 								-	for (var x=1, y= x + 'tree'; x <= data.fulltree; x++) 
 										div.tahrees.treecontainer
 											div(id=y, class='tree')
-												div
-													img(src='/images/tree2.png')
+												img(src='/images/tree2.png')
 								div.tahrees.remainderTreecontainer
 									div.remainderTree
-										div
-											img(src='/images/tree2.png')
+										img(src='/images/tree2.png')
 								div.tahrees.remainderTreecontainer
 									div.nomoneytree
-										div
-											img(src='/images/tree2.png')
+										img(src='/images/tree2.png')
 		footer.page-footer
 			div.container
 				div.row

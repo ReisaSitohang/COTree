@@ -5,20 +5,20 @@ script.
 			console.log("no remains")
 				console.log('#data.fulltree')
 			if ('#{data.fulltree}' == 1) {
-				$('#treetext').html("Woohoo, you have a tree!")
+				$('#treetext').html("Thanks to you we can plant 1 tree!")
 				}
 			else {
-				$('#treetext').html("Check out your trees!")
+				$('#treetext').html("Look at the trees we can plant because of you!")
 				}
 			//if not 0px fill the tree up to the remainder amount and show remaindertree
 		} else if ('#{data.remainder}' !== '0px') {
 			$('.remainderTree').css('height', '#{data.remainder}')
 			$('.remainderTree').css('visibility', 'visible')
 			if ('#data.fulltree' < 1) {
-				$('#treetext').html("Looks like you need to donate more to plant a full tree")
+				$('#treetext').html("You have donated enough for " + '#{data.percentage}' + " of one tree")
 				}
 			else {
-				$('#treetext').html("Donate more to grow your forest")
+				$('#treetext').html("")
 				}	
 		}
 	}
@@ -30,7 +30,6 @@ script.
 			$('#treetext').html("Looks like you don't have any trees yet")
 		}
 	}
-
 	//configure animate.css
 	$.fn.extend({animateCss: function (animationName) {
 		var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
@@ -39,7 +38,6 @@ script.
 			});
 		}
 	});
-
 	$(document).ready(function() {
 		console.log("ready")
 		if ('#{data.donationAmount}' == 0) {
@@ -50,3 +48,4 @@ script.
 		$('.tahrees').animateCss('wobble')
 		$('.tree').css('height', '100px')
 	})
+	

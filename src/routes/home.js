@@ -4,10 +4,11 @@ const router = express.Router()
 
 router.get( '/home', (req, res) => {
 	console.log("Someone's home")
-	let donation = 2
+	let donation = 6.5
 	let data = {
 	donationAmount: donation,
 	fulltree: donation/2,
+	percentage: ((donation % 2)/2)*100 + '%',
 	remainder: ((donation % 2)/2)*100 + 'px'
 	}
 	for (var i = 1; i <= data.fulltree; i++) {
