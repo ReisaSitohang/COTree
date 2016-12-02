@@ -10,10 +10,6 @@ const bcrypt                      = require('bcrypt-nodejs')
 const db                          = require('../models/database');
 const local                       = require('../models/local');
 const facebook                    = require('../models/facebook')
-<<<<<<< 96ff2a6caa9692889f401d25662d6f082cee9d9e
-
-=======
->>>>>>> login and facebook login done minor bug
 
 
 router.use(session({
@@ -97,7 +93,6 @@ router.route('/register')
 		})
 	})
 })
-
 
 module.exports = router
 

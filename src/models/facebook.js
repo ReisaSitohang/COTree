@@ -18,7 +18,6 @@ function(accessToken, refreshToken, profile, callback) {
   profile.accessToken = accessToken;
   console.log(profile)
 
-
   let findOrCreateUser = () => {
     db.fbuser.find({where: {'fbid' : profile.id}}).then((user)=> {
       if (user) {

@@ -15,6 +15,7 @@ router.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 })); 
 
 
+
 //Define database tables/model
 db.user = db.connection.define('user', {
 	fbid: sequelize.BIGINT,
@@ -57,7 +58,6 @@ db.connection.sync( {'force': false} ).then(
 	},
 	(err) => { console.log('Synchronize failed: ' + err) } 
 	)
-
 
 
 //_________routes

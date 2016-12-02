@@ -19,9 +19,7 @@ nav, footer.page-footer {
 footer.page-footer {
 	margin-top: 0px
 }
-=======
 
->>>>>>> Sloppily added work
 
 .brand-logo{
 	padding-left: 10px !important;
@@ -37,14 +35,11 @@ body {
 	flex-direction: column;
 }
 
-<<<<<<< 095fdf73004290d8a6cde5f1ffc39e0968edb256
-main {
-=======
+
 #main {
->>>>>>> Sloppily added work
 	flex: 1 0 auto;
 }
-<<<<<<< 095fdf73004290d8a6cde5f1ffc39e0968edb256
+
 #homeheader {
 	min-height: 300px;
 	background-image: url('/images/Leaves.jpg');
@@ -125,8 +120,6 @@ main {
     transform: translate3d(250%, 0, 0);
   }
 }
-=======
->>>>>>> Sloppily added work
 
 #forest {
 	position: relative;
@@ -149,13 +142,9 @@ main {
 	background-color: $accent-color;
 	height: 100px;
 	width: 82px;
-<<<<<<< 095fdf73004290d8a6cde5f1ffc39e0968edb256
 	&:hover {
 		background-color: green;
 	}
-=======
-	
->>>>>>> Sloppily added work
 	img {
 		height: 100px;
 		position: absolute;
@@ -198,20 +187,12 @@ footer {
 	}
 }
 
-<<<<<<< 095fdf73004290d8a6cde5f1ffc39e0968edb256
-=======
-
->>>>>>> Sloppily added work
 .background{
 	height:100%;
 	background-image: url('../images/background.jpg') ;
 	background-size: cover;
 }
 
-<<<<<<< 095fdf73004290d8a6cde5f1ffc39e0968edb256
-=======
-
->>>>>>> Sloppily added work
 /* just some content with arbitrary styles for explanation purposes */
 .login-form {
 	position:absolute;
@@ -224,21 +205,13 @@ footer {
     z-index: 11; /* 1px higher than the overlay layer */
     h1 {
     	color:white;
-<<<<<<< 095fdf73004290d8a6cde5f1ffc39e0968edb256
     	// margin-left: 80px;
     }
 }
+
 
 .tahrees {
 	animation-duration: 2s;
 	animation-delay: 1s;
 	animation-iteration-count: 1;
-}
-=======
-    	margin-left: 80px;
-    }
-}
-
-
->>>>>>> Sloppily added work
-
+} 

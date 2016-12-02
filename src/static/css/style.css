@@ -22,8 +22,12 @@ body {
   min-height: 100vh;
   flex-direction: column; }
 
+<<<<<<< HEAD
 <<<<<<< 095fdf73004290d8a6cde5f1ffc39e0968edb256
 main {
+=======
+#main {
+>>>>>>> 26c5fd3cb887b6082f89b775d5f7f153887a528b
   flex: 1 0 auto; }
 
 #homeheader {
