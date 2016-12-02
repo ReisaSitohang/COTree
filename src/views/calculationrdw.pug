@@ -9,6 +9,7 @@ html
 				div.row.valign
 					h1.center.white-text Calculate your ride		
 		main
+<<<<<<< 095fdf73004290d8a6cde5f1ffc39e0968edb256
 			div.container 
 				div.row
 					div#calccard.card
@@ -55,6 +56,34 @@ html
 								//- 	div.col.m6.offset-m8.col.s10.offset-s1
 								//- 		include includes/treepreloadbar.pug										
 
+=======
+			h3 Calculate your ride
+			form
+				div.row.buttons
+					div.col.m1.offset-m1.buttongroup.col.s10.offset-s1
+						input#chooseLicence.btn(type='button', value="Licence")
+					div.col.m2.buttongroup.col.s10.offset-s1
+						input#chooseIknow.btn(type='button', value="Mileage")
+					div.col.m1.buttongroup.col.s10.offset-s1
+						input#chooseCartype.btn(type='button', value="Car")
+				div.row#calculationAppend
+					#calculationArea.col.m4.offset-m1.col.s10.offset-s1
+						form
+							label Please fill in your licence number and your distance in kilometers
+							input#Kenteken(type='text', value='91SFBH')
+							br
+							input#Kilometers(type='number', placeholder='distance in kilometers')
+							br
+							input#search.btn(type='button', value='Go!')
+							p tip: If you don't know your licence plate number,<br> choose another option at the tabs above.
+					#donationArea.col.m5.offset-m1.col.s10.offset-s1
+						#donationTextBox.col.s12
+							br
+							h5#donationAmount
+						.col.s12
+							input#donatenowBtn.btn(type='button', value='Donate total now')
+							input#donatelaterBtn.btn(type='button', value='Save to your total')
+>>>>>>> Sloppily added work
 						
 	include includes/footer.pug
 

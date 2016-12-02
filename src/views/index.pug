@@ -11,6 +11,21 @@ html
 				h1 Welcome to COTree!
 				a(href="/auth/facebook")
 					img(src='/images/fb_login.png')
+			.row
+				form.col.s12(action='/login' method='post')
+					.row 
+						.input-field-col.s12
+							input#email(type='email' name='email' autocomplete='off' required)
+							label(for='email') E-mail
+					.row
+						.input-field-col.s12
+							input#password(type='password' name='password' autocomplete='off' required secret)
+							label(for='password' ) Password
+					.row
+						button.btn.waves-effect.waves-light(type='submit')
+							| Log-In
+							i.material-icons.right send
+
 				
 	
 

@@ -13,6 +13,7 @@ script.
 
 			function calcDonation1(km){
 				let checkbox = 0
+<<<<<<< 095fdf73004290d8a6cde5f1ffc39e0968edb256
 				$(".preloader-wrapper").show()	
 				$.post("/kentekencalc", { kenteken: $("#Kenteken").val() }, (res)=>{
 					let brandstofperkm =res.brandstofverbruik/100
@@ -51,6 +52,41 @@ script.
 		    			}, 2000)  
 		    		}				
 				}).then( () =>{
+=======
+				$.getJSON("https://opendata.rdw.nl/resource/8ys7-d773.json", function(data) {
+				    for (let i = 0; i < data.length; i++){
+				    	if( data[i].kenteken === $("#Kenteken").val() ){
+				    		checkbox = 1
+				    		let brandstofsoort = data[i].brandstof_omschrijving
+				    		console.log(data[i].brandstofverbruik_gecombineerd)
+				    		let brandstofperkm = data[i].brandstofverbruik_gecombineerd/100
+				    		if ( brandstofsoort == "Benzine" ){
+				    			LitersBrandstof = km*brandstofperkm
+				    			Co2Vervuiling   = LitersBrandstof*BenzineCo2
+				    			Co2inBomen      = Co2Vervuiling/kgC02perboom
+				    			Donatie         = Co2inBomen*prijsperBoom
+				    			$("#donationAmount").empty()
+				    			$("#donationAmount").append("Co2 in kg: "+parseFloat(Co2Vervuiling).toFixed(0)+"<br> Donate €"+parseFloat(Donatie).toFixed(2)+"<br>to neutralize your carbon emmision :)")
+				    			$.post("/calculation", {donation: parseFloat(Donatie).toFixed(2), kilometer: km }, (res)=>{
+								console.log("Posting info to Node")
+								})
+				    		}
+			    			if ( brandstofsoort == "Diesel" ){
+				    			LitersBrandstof = km*brandstofperkm
+				    			Co2Vervuiling = LitersBrandstof*DieselCo2
+				    			Co2inBomen = Co2Vervuiling/kgC02perboom
+				    			Donatie = Co2inBomen*prijsperBoom
+				    			$("#donationAmount").empty()
+				    			$("#donationAmount").append("Co2 in kg: "+parseFloat(Co2Vervuiling).toFixed(0)+"<br> Donate: € "+parseFloat(Donatie).toFixed(2)+"<br>to neutralize your carbon emmision :)")
+				    			$.post("/calculation", {donation: parseFloat(Donatie).toFixed(2), kilometer: km }, (res)=>{
+								console.log("Posting info to Node")
+								})
+				    		}
+				    	}
+				   	}
+			    })
+			    .then( () =>{
+>>>>>>> Sloppily added work
 			    	if(checkbox == 0){
 			    		$(".preloader-wrapper").hide() 
 			    		$("#donationAmount").empty()
@@ -112,6 +148,7 @@ script.
 			    			Co2Vervuiling   = LitersBrandstof*BenzineCo2
 			    			Co2inBomen      = Co2Vervuiling/kgC02perboom
 			    			Donatie         = Co2inBomen*prijsperBoom
+<<<<<<< 095fdf73004290d8a6cde5f1ffc39e0968edb256
 			    			setTimeout(function(){ $(".preloader-wrapper").hide() 
 				    			$("#donationAmount").empty()
 				    			$("#donationAmount").append("CO2 :  "+parseFloat(Co2Vervuiling).toFixed(0)+" kg <br> Donate :  €"+parseFloat(Donatie).toFixed(2)+"<br><p class='co2'>to neutralize your carbon emmision :)</p>")
@@ -121,6 +158,11 @@ script.
 			    			$.post("/donationcalc", {donation: parseFloat(Donatie).toFixed(2), kilometer: km }, (res)=>{
 			    				alert("Posting to NODE")
 							}) 
+=======
+			    			console.log(Donatie)
+			    			$("#donationAmount").empty()
+			    			$("#donationAmount").append("Co2 in kg: "+parseFloat(Co2Vervuiling).toFixed(0)+"<br> Donate €"+parseFloat(Donatie).toFixed(2)+"<br>to neutralize your carbon emmision :)")
+>>>>>>> Sloppily added work
 		    			}
 	    			if ( brandstofsoort == 2 ){
 	    					$(".preloader-wrapper").show()	
@@ -130,6 +172,7 @@ script.
 			    			Donatie = Co2inBomen*prijsperBoom
 		    			setTimeout(function(){ $(".preloader-wrapper").hide() 
 			    			$("#donationAmount").empty()
+<<<<<<< 095fdf73004290d8a6cde5f1ffc39e0968edb256
 			    			$("#donationAmount").append("CO2 :  "+parseFloat(Co2Vervuiling).toFixed(0)+" kg <br> Donate :  €"+parseFloat(Donatie).toFixed(2)+"<br><p class='co2'>to neutralize your carbon emmision :)</p>")
 							$("#donationAmount").hide()	
 							$("#donationAmount").fadeIn( 800 )	    			
@@ -138,6 +181,10 @@ script.
 		    				alert("Posting to NODE")
 						})
 			    	}
+=======
+			    			$("#donationAmount").append("Co2 in kg: "+parseFloat(Co2Vervuiling).toFixed(0)+"<br> Donate €"+parseFloat(Donatie).toFixed(2)+"<br>to neutralize your carbon emmision :)")
+		    			}
+>>>>>>> Sloppily added work
 			    }
 
 		//This calculates donation trough CAR TYPE, L/km info taken from bptargetneutral.com/uk/calculate/car/economy?fuel=P
@@ -158,6 +205,7 @@ script.
 			    			Co2inBomen      = Co2Vervuiling/kgC02perboom
 			    			Donatie         = Co2inBomen*prijsperBoom
 			    			console.log(Donatie)
+<<<<<<< 095fdf73004290d8a6cde5f1ffc39e0968edb256
 			    			setTimeout(function(){ $(".preloader-wrapper").hide() 
 				    			$("#donationAmount").empty()
 				    			$("#donationAmount").append("CO2 :  "+parseFloat(Co2Vervuiling).toFixed(0)+" kg <br> Donate :  €"+parseFloat(Donatie).toFixed(2)+"<br><p class='co2'>to neutralize your carbon emmision :)</p>")
@@ -167,6 +215,10 @@ script.
 			    			$.post("/donationcalc", {donation: parseFloat(Donatie).toFixed(2), kilometer: km }, (res)=>{
 			    				alert("Posting to NODE")
 							}) 
+=======
+			    			$("#donationAmount").empty()
+			    			$("#donationAmount").append("Co2 in kg: "+parseFloat(Co2Vervuiling).toFixed(0)+"<br> Donate €"+parseFloat(Donatie).toFixed(2)+"<br>to neutralize your carbon emmision :)")
+>>>>>>> Sloppily added work
 		    			}
 	    			if ( brandstofsoort == 2 ){
 	    					$(".preloader-wrapper").show()	
@@ -174,6 +226,7 @@ script.
 			    			Co2Vervuiling = LitersBrandstof*DieselCo2
 			    			Co2inBomen = Co2Vervuiling/kgC02perboom
 			    			Donatie = Co2inBomen*prijsperBoom
+<<<<<<< 095fdf73004290d8a6cde5f1ffc39e0968edb256
 			    			setTimeout(function(){ $(".preloader-wrapper").hide() 
 				    			$("#donationAmount").empty()
 				    			$("#donationAmount").append("CO2 :  "+parseFloat(Co2Vervuiling).toFixed(0)+" kg <br> Donate :  €"+parseFloat(Donatie).toFixed(2)+"<br><p class='co2'>to neutralize your carbon emmision :)</p>")
@@ -183,6 +236,10 @@ script.
 			    			$.post("/donationcalc", {donation: parseFloat(Donatie).toFixed(2), kilometer: km }, (res)=>{
 			    				alert("Posting to NODE")
 							}) 
+=======
+			    			$("#donationAmount").empty()
+			    			$("#donationAmount").append("Co2 in kg: "+parseFloat(Co2Vervuiling).toFixed(0)+"<br> Donate €"+parseFloat(Donatie).toFixed(2)+"<br>to neutralize your carbon emmision :)")
+>>>>>>> Sloppily added work
 		    			}
 			    }
 
@@ -225,6 +282,7 @@ script.
 
 		//Show donation types
 		$('body').on("click", '#chooseLicence', function() {
+<<<<<<< 095fdf73004290d8a6cde5f1ffc39e0968edb256
 
 			function licence () { 
 				console.log("KLIKKED LICENCE BUTTON")
@@ -237,6 +295,18 @@ script.
 
 				$("#search").click( function() {
 					console.log("clicked go button")
+=======
+			console.log("KLIK")
+			$("#calculationAppend").empty()
+			$("#calculationAppend").append('<div id="calculationArea" class="col m4 offset-m1 col s10 offset-s1"> <form> <label>Please fill in your licence number and your distance in kilometers</label> <input id="Kenteken" type="text" value="91SFBH"/><br/> <input id="Kilometers" type="number" placeholder="distance in kilometers"/><br/> <input id="search" type="button" value="Go!" class="btn"/></form></div><div id="donationArea" class="col m5 offset-m1 col s10 offset-s1"> <div id="donationTextBox" class="col s12"><br/> <h5 id="donationAmount"></h5> </div><div class="col s12"> <input id="donatenowBtn" type="button" value="Donate total now" class="btn"/> <input id="donatelaterBtn" type="button" value="Save to your total" class="btn"/> </div></div>')
+		//setting handlers again after new html injection, dynamic html "jquery issue"
+			$("#search").click( function() {
+				console.log("clicked go button")
+				submitInfo1()
+			})
+			$("#Kenteken").keypress(function(e) {
+			    if(e.which == 13) {
+>>>>>>> Sloppily added work
 					submitInfo1()
 				})
 				$("#Kenteken").keypress(function(e) {
@@ -258,6 +328,7 @@ script.
 
 		$('body').on('click', '#chooseIknow', function() {
 		console.log("clicked the button")
+<<<<<<< 095fdf73004290d8a6cde5f1ffc39e0968edb256
 			function mileage (){
 				$("#AppendHere").empty()
 				$("#AppendHere").append('<div class="col m6 offset-m1 col s10 offset-s1"> <div class="row buttons"> <div class="col m3 buttongroup col s10 offset-s1"> <input id="chooseLicence" type="button" value="Licence" class="btn"/> </div><div class="col m4 buttongroup col s10 offset-s1"> <input id="chooseIknow" type="button" value="Mileage" class="btn"/> </div><div class="col m3 buttongroup col s10 offset-s1"> <input id="chooseCartype" type="button" value="Car" class="btn"/> </div></div><div id="calculationAppend" class="row"> <div id="calculationArea" class="col m10 col s10 offset-s1"> <div id="effect"><form><label>Please fill in your gass mileage</label><input id="gasMileage" type="text" placeholder="liters of gas per 100KM"/><br/><div class="input-field col s12"></div><label>Choose you fuel type</label><select id="fuelType"><option disabled selected value="">Diesel or Benzine</option><option value="1">Benzine</option><option value="2">Diesel</option></select><br><label>Distance of your car-ride</label><input id="Kilometers" placeholder="distance in kilometers" type="number"><br><input id="search" type="button" value="Go!" class="btn"/> <div class="loadbar"> <div class="preloader-wrapper small active"> <div class="spinner-layer spinner-green-only"> <div class="circle-clipper left"> <div class="circle"></div></div><div class="gap-patch"> <div class="circle"></div></div><div class="circle-clipper right"> <div class="circle"></div></div></div></div></div></form> </div></div></div></div><div class="col m5 col s10 offset-s1"> <div id="donationArea" class="col m11 col s10 offset-s1"> <div id="CalcTitle" class="white-text">Carbon Emmision Calculator</div><div id="donationTextBox" class="col s12"><br/> <h5 id="donationAmount"></h5> </div><div class="col s12"> <input id="donatenowBtn" type="button" value="Donate total now" class="btn"/> <input id="donatelaterBtn" type="button" value="Save to your total" class="btn"/> </div></div></div>')
@@ -270,6 +341,19 @@ script.
 				
 				$("#search").click( function() {
 					console.log("clicked go button")
+=======
+			$("#calculationAppend").empty()
+			$("#calculationAppend").append('<div id="calculationArea" class="col m4 offset-m1 col s10 offset-s1"><label>Please fill in your gass mileage</label><input id="gasMileage" type="text" placeholder="liters of gas per 100KM"/><br/><div class="input-field col s12"></div><label>Choose you fuel type</label><select id="fuelType"> <option value="" disabled="" selected="">Diesel or Benzine</option> <option value="1">Benzine</option> <option value="2">Diesel</option></select><br/><label>Distance of your car-ride</label><input id="Kilometers" type="number" placeholder="distance in kilometers"/><br/><input id="search" class="btn" type="button" value="Go!"/></div></div><div id="donationArea" class="col m5 offset-m1 col s10 offset-s1"> <div id="donationTextBox" class="col s12"><br/> <h5 id="donationAmount"></h5> </div><div class="col s12"> <input id="donatenowBtn" type="button" value="Donate total now" class="btn"/> <input id="donatelaterBtn" type="button" value="Save to your total" class="btn"/> </div></div>')
+			//binding js handlers after new html injection, dynamic html jquery issue
+			$('select').material_select()
+			
+			$("#search").click( function() {
+				console.log("clicked go button")
+				submitInfo2()
+			})
+			$("#gasMileage").keypress(function(e) {
+			    if(e.which == 13) {
+>>>>>>> Sloppily added work
 					submitInfo2()
 				})
 				$("#gasMileage").keypress(function(e) {
@@ -296,6 +380,7 @@ script.
 
 		$('body').on('click', '#chooseCartype', function() {
 		console.log("clicked the button")
+<<<<<<< 095fdf73004290d8a6cde5f1ffc39e0968edb256
 			function cartype (){
 				$("#AppendHere").empty()
 				$("#AppendHere").append('<div class="col m6 offset-m1 col s10 offset-s1"> <div class="row buttons"> <div class="col m3 buttongroup col s10 offset-s1"> <input id="chooseLicence" type="button" value="Licence" class="btn"/> </div><div class="col m4 buttongroup col s10 offset-s1"> <input id="chooseIknow" type="button" value="Mileage" class="btn"/> </div><div class="col m3 buttongroup col s10 offset-s1"> <input id="chooseCartype" type="button" value="Car" class="btn"/> </div></div><div id="calculationAppend" class="row"> <div id="calculationArea" class="col m10 col s10 offset-s1"> <div id="effect"><form><l<label>Click on the vehicle most like yours</label><div class="row"><div class="col s10 offset-s1"><p id="cargasInfo"><br></p></div></div><div class="row cars"><div class=" col m4 col s10 offset-s1"><img class="car" id="carS" src="./images/carS.png"></div><div class="col m4 col s10 offset-s1"><img class="car" id="carM" src="./images/carM.png"></div><div class="col m4 col s10 offset-s1"><img class="car" id="carL" src="./images/carL.png"></div></div><div class="input-field col s12"></div><label>Choose you fuel type</label><select id="fuelType"><option disabled selected value="">Diesel or Benzine</option><option value="1">Benzine</option><option value="2">Diesel</option></select><br><label>Distance of your car-ride</label><input id="Kilometers" placeholder="distance in kilometers" type="number"><br><input id="search" type="button" value="Go!" class="btn"/> <div class="loadbar"> <div class="preloader-wrapper small active"> <div class="spinner-layer spinner-green-only"> <div class="circle-clipper left"> <div class="circle"></div></div><div class="gap-patch"> <div class="circle"></div></div><div class="circle-clipper right"> <div class="circle"></div></div></div></div></div></form></div> </div></div></div><div class="col m5 col s10 offset-s1"> <div id="donationArea" class="col m11 col s10 offset-s1"> <div id="CalcTitle" class="white-text">Carbon Emmision Calculator</div><div id="donationTextBox" class="col s12"><br/> <h5 id="donationAmount"></h5> </div><div class="col s12"> <input id="donatenowBtn" type="button" value="Donate total now" class="btn"/> <input id="donatelaterBtn" type="button" value="Save to your total" class="btn"/> </div></div></div>')
@@ -330,6 +415,60 @@ script.
 				    $("#cargasInfo").empty()
 					$("#cargasInfo").append(carL+"liters/100km on average")
 				})
+=======
+			$("#calculationAppend").empty()
+			$("#calculationAppend").append('<div id="calculationArea" class="col m4 offset-m1 col s10 offset-s1"><form><label>Click on the vehicle most like yours</label><div class="row"><div class="col s10 offset-s1"><p id="cargasInfo"><br></p></div></div><div class="row cars"><div class=" col m4 col s10 offset-s1"><img class="car" id="carS" src="./images/carS.png"></div><div class="col m4 col s10 offset-s1"><img class="car" id="carM" src="./images/carM.png"></div><div class="col m4 col s10 offset-s1"><img class="car" id="carL" src="./images/carL.png"></div></div><div class="input-field col s12"></div><label>Choose you fuel type</label> <select id="fuelType"><option disabled selected value="">Diesel or Benzine</option><option value="1">Benzine</option><option value="2">Diesel</option></select><br><label>Distance of your car-ride</label> <input id="Kilometers" placeholder="distance in kilometers" type="number"><br><input class="btn" id="search" type="button" value="Go!"></form></div><div id="donationArea" class="col m5 offset-m1 col s10 offset-s1"> <div id="donationTextBox" class="col s12"><br/> <h5 id="donationAmount"></h5> </div><div class="col s12"> <input id="donatenowBtn" type="button" value="Donate total now" class="btn"/> <input id="donatelaterBtn" type="button" value="Save to your total" class="btn"/> </div></div>')
+			//setting binded js again after new html injection, dynamic html jquery issue
+			$('select').material_select()
+
+			//The 3 car selecting effects
+			$('#carS').click(function () {
+				carUser = carS
+			    $('#carS').addClass('selectedCar')
+			    $('#carM').removeClass('selectedCar')
+			    $('#carL').removeClass('selectedCar')
+			    $("#cargasInfo").empty()
+				$("#cargasInfo").append(carS+"liters/100km on average")
+			})
+			$("#carM").click( function() {
+				carUser = carM
+			    $('#carM').addClass('selectedCar')
+			    $('#carS').removeClass('selectedCar')
+			    $('#carL').removeClass('selectedCar')
+			    $("#cargasInfo").empty()
+				$("#cargasInfo").append(carM+"liters/100km on average")
+			})
+			$("#carL").click( function() {
+				carUser = carL
+			    $('#carL').addClass('selectedCar')
+			    $('#carM').removeClass('selectedCar')
+			    $('#carS').removeClass('selectedCar')
+			    $("#cargasInfo").empty()
+				$("#cargasInfo").append(carL+"liters/100km on average")
+			})
+
+			//Submit info part to call the calculate function
+			$("#search").click( function() {
+				console.log("clicked go button")
+				submitInfo3()
+			})
+			$("#gasMileage").keypress(function(e) {
+			    if(e.which == 13) {
+					submitInfo3()
+			    }
+			})
+			$("#fuelType").keypress(function(e) {
+			    if(e.which == 13) {
+			        submitInfo3()
+			    }
+			})
+			$("#Kilometers").keypress(function(e) {
+			    if(e.which == 13) {
+			        submitInfo3()
+			    }
+			})		
+		})
+>>>>>>> Sloppily added work
 
 				//Submit info part to call the calculate function
 				$("#search").click( function() {

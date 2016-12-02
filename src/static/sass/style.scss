@@ -2,6 +2,7 @@
 	max-width: 100%;
 }
 
+<<<<<<< 095fdf73004290d8a6cde5f1ffc39e0968edb256
 $primary-color-dark:   #512DA8;
 $primary-color:        #673AB7;
 $primary-color-light:  #D1C4E9;
@@ -19,6 +20,7 @@ footer.page-footer {
 	margin-top: 0px
 }
 
+
 .brand-logo{
 	padding-left: 10px !important;
 	padding-top: 3px !important;
@@ -33,9 +35,11 @@ body {
 	flex-direction: column;
 }
 
-main {
+
+#main {
 	flex: 1 0 auto;
 }
+
 #homeheader {
 	min-height: 300px;
 	background-image: url('/images/Leaves.jpg');
@@ -205,9 +209,9 @@ footer {
     }
 }
 
+
 .tahrees {
 	animation-duration: 2s;
 	animation-delay: 1s;
 	animation-iteration-count: 1;
-}
-
+} 

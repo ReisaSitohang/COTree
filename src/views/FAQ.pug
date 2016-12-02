@@ -1,0 +1,28 @@
+html
+	head
+		title Calculation
+		include includes/head.pug
+		include includes/calculationscriptrdw.pug				
+	body
+		include includes/navbar.pug
+		main
+			#faq
+				ul.collapsible(data-collapsible='accordion')
+					li
+						.collapsible-header
+							i.material-icons info_outline
+							| How do we do our calculations? 
+						.collapsible-body
+							p We got our calculations from #[a(href='http://co2emissiefactoren.nl/lijst-emissiefactoren/') CO2 Emissie Factoren] and #[a(href='http://www.adoptatreeinnepal.nl/') Adopt a Tree in Nepal]
+					li
+						.collapsible-header
+							i.material-icons info_outline
+							| Where does the money go? 
+						.collapsible-body
+							p All donations directly go to #[a(href='http://www.adoptatreeinnepal.nl/') Adopt a Tree in Nepal], they use the money to plant trees that in turn finance women as a form of microcredit.
+					li
+						.collapsible-header
+							i.material-icons info_outline
+							| How did you start this intiative? 
+						.collapsible-body
+							p We are three students at the #[a(href='https://nycda.com/') New York Code &amp Design Acadamy] in Amsterdam, as part of an assignement we came up with this idea. You can find us here: #[a(href='https://www.linkedin.com/in/reisa-sitohang-6a429097') Reisa], #[a(href='https://www.linkedin.com/in/manon-vrugt-53762619 ') Manon], #[a(href='https://www.linkedin.com/in/cdavanderwoude') Daniel]
