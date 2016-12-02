@@ -65,11 +65,14 @@ nodesass.render({
 let profile 		  = require( __dirname + '/routes/profile' )
 let calculationRouter = require( __dirname+'/routes/calculation' )
 let routes            = require(__dirname + '/routes/routes' )
+let homeRouter            = require(__dirname + '/routes/home' )
+
 
 
 app.use('/', profile )
 app.use('/', calculationRouter )
 app.use('/', routes)
+app.use('/', homeRouter)
 
 
 
