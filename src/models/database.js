@@ -22,7 +22,7 @@ db.user = db.connection.define('user', {
 })
 
 
-db.connection.sync( {'force': true} ).then(
+db.connection.sync( {'force': false} ).then(
 
 	() => { 
 		console.log ( 'Synchronized' )
