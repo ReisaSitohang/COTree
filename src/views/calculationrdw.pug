@@ -2,7 +2,7 @@ html
 	head
 		title Calculation
 		include includes/head.pug
-		include includes/calculationscriptrdw.pug				
+		include includes/calculationscriptrdw.pug			
 	body
 		include includes/navbar.pug
 		div#homeheader.valign-wrapper
@@ -11,42 +11,49 @@ html
 		main
 			div.container 
 				div.row
-					div#homecard.card
+					div#calccard.card
 						div.card-content
 							form
-								div.row.buttons
-									div.col.m1.offset-m1.buttongroup.col.s10.offset-s1
-										input#chooseLicence.btn(type='button', value="Licence")
-									div.col.m2.buttongroup.col.s10.offset-s1
-										input#chooseIknow.btn(type='button', value="Mileage")
-									div.col.m1.buttongroup.col.s10.offset-s1
-										input#chooseCartype.btn(type='button', value="Car")
-								div.row#calculationAppend
-									#calculationArea.col.m4.offset-m1.col.s10.offset-s1
-										form
-											label Please fill in your licence number and your distance in kilometers
-											input#Kenteken(type='text', value='91SFBH',pattern='.{6,}' title='6 characters minimum' required)
-											br
-											input#Kilometers(type='number', placeholder='distance in kilometers' required)
-											br
-											input#search.btn(type='button', value='Go!')
-											div.loadbar
-												.preloader-wrapper.small.active
-													.spinner-layer.spinner-green-only
-														.circle-clipper.left
-															.circle
-														.gap-patch
-															.circle
-														.circle-clipper.right
-															.circle
-											p tip: If you don't know your licence plate number,<br> choose another option at the tabs above.
-									#donationArea.col.m5.offset-m1.col.s10.offset-s1
-										#donationTextBox.col.s12
-											br
-											h5#donationAmount
-										.col.s12
-											input#donatenowBtn.btn(type='button', value='Donate total now')
-											input#donatelaterBtn.btn(type='button', value='Save to your total')
+								div.row#AppendHere
+									div.col.m6.offset-m1.col.s10.offset-s1
+										div.row.buttons
+											div.col.m3.buttongroup.col.s10.offset-s1
+												input#chooseLicence.btn(type='button', value="Licence")
+											div.col.m4.buttongroup.col.s10.offset-s1
+												input#chooseIknow.btn(type='button', value="Mileage")
+											div.col.m3.buttongroup.col.s10.offset-s1
+												input#chooseCartype.btn(type='button', value="Car")
+										div.row#calculationAppend
+											#calculationArea.col.m10.col.s10.offset-s1
+												form
+													label Please fill in your licence number and your distance in kilometers
+													input#Kenteken(type='text', value='91SFBH',pattern='.{6,}' title='6 characters minimum' required)
+													br
+													input#Kilometers(type='number', placeholder='distance in kilometers' required)
+													br
+													input#search.btn(type='button', value='Go!')
+													div.loadbar
+														.preloader-wrapper.small.active
+															.spinner-layer.spinner-green-only
+																.circle-clipper.left
+																	.circle
+																.gap-patch
+																	.circle
+																.circle-clipper.right
+																	.circle
+													p tip: If you don't know your licence plate number,<br> choose another option at the tabs above.
+									div.col.m5.col.s10.offset-s1
+										#donationArea.col.m11.col.s10.offset-s1
+											#CalcTitle.white-text Carbon Emmision Calculator
+											#donationTextBox.col.s12
+												br
+												h5#donationAmount
+											.col.s12
+												input#donatenowBtn.btn(type='button', value='Donate total now')
+												input#donatelaterBtn.btn(type='button', value='Save to your total')
+								//- div.row#treeloader
+								//- 	div.col.m6.offset-m8.col.s10.offset-s1
+								//- 		include includes/treepreloadbar.pug										
 
 						
 	include includes/footer.pug
