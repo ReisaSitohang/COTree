@@ -23,20 +23,22 @@ html
 											img#cloud1.animated.pulse(src='/images/cloud1.png')
 										div#car
 											img#carpic(src='/images/car2.png')
+								div.divider
 								div#kms.container
 									div.row
 										p.flowtext You have driven ... km's
+										br
 										p.flowtext Which amounts to .. kg CO2
-								div.divider
-								div#cash.container
+								
+					div.col.l5.offset-l1
+						div#homecard.card
+							div.card-content.center
+								div#right.col.l6
+									h5 Your donations
+									div#cash.container
 									div.row
 										div#euro
 											img#europic(src='/images/euro.png')
-					div.col.l5.offset-l1
-						div#homecard.card
-							div.card-content
-								div#right.col.l6
-									h5.center Your donations
 			div#resultsection.valign-wrapper
 				div.row.valign
 					h1.center.white-text Your impact
@@ -46,6 +48,7 @@ html
 						div#treecard.card
 							div#forest.center
 								h5 A visualisation of what we can do with your donation.
+								br
 								p#treetext
 								-	for (var x=1, y= x + 'tree'; x <= data.fulltree; x++) 
 										div.tahrees.treecontainer
