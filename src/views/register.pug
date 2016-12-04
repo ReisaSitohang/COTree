@@ -3,44 +3,33 @@ html
 		// - Style Sheets
 		link(href='http://fonts.googleapis.com/icon?family=Material+Icons', rel='stylesheet')
 		link(type='text/css', rel='stylesheet', href='css/materialize.css', media='screen,projection')
-		// - Scripts
-		link(type='text/javascript', src='js/jquery-3.1.1.min.js')
-		link(type='text/javascript', src='js/materialize.min.js')
 		// - Meta
 		meta(name='viewport', content='width=device-width, initial-scale=1.0')
+		include includes/head.pug
 	body
-		// - Navigation
-		nav
-			.nav-wrapper
-				a.brand-logo(href='#') COTree
-				ul#nav-mobile.right.hide-on-med-and-down
-					li
-						a(href='#') Home
-					li 
-						a(href='#') Menu 2
-					li 
-						a(href='#') Menu 3
-		h2#error-message= message
-		// - Registry form
-		div
-			.row
-				form.col.s12(action='/register' method='post')
+		.background
+		.register-form
+			.overlay
+				h1.register.white-text Register
+				form(action='/register' method='post')
 					.row
 						.input-field-col.s6
+							p.white-text First Name
 							input#first_name(type='text' name='first_name' autocomplete='off' required)
-							label(for='first_name') First Name
 						.input-field-col.s6
-							input#last_name(type='text' name='last_name' autocomplete='off' required)
-							label(for='last_name') Last Name
-					.row 
-						.input-field-col.s12
-							input#email(type='email' name='email' autocomplete='off' required)
-							label(for='email') E-mail
-					.row
-						.input-field-col.s12
-							input#password(type='password' name='password' autocomplete='off' required secret)
-							label(for='password') Password
+							p.white-text Last Name
+							input#last_name.white-text(type='text' name='last_name' autocomplete='off' required)
+						.input-field-col.s6
+							p.white-text Email
+							input#email.white-text(type='email' name='email' autocomplete='off' required)
+						.input-field-col.s6
+							p.white-text Password
+							input#password.white-text(type='password' name='password' autocomplete='off' required secret)
+							h2#error-message= message
 					.row
 						button.btn.waves-effect.waves-light(type='submit')
 							| Register
 							i.material-icons.right send
+						//- a.btn.waves-effect.waves-light.other(href="/")
+						//- 	| Log-In &nbsp&nbsp&nbsp&nbsp
+						//- 	i.material-icons.right send

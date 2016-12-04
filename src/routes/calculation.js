@@ -5,51 +5,57 @@ const router     =  express.Router(  )
 const session    =  require( 'express-session' )
 const bodyParser =  require( 'body-parser' )
 const sequelize  =  require( 'sequelize' )
-const db         =  require(__dirname+'/../models/database')
-const passport   = require('passport')
-const LocalStrategy = require('passport-local').Strategy;
+const Promise    =  require('promise')
+const db         =  new sequelize('cotree', process.env.POSTGRES_USER, process.env.POSTGRES_PASSWORD,{
+						host: 'localhost',
+						dialect: 'postgres'
+					});
 
+router.use(session({
+	secret: 'oh wow very secret much security',
+	resave: true,
+	saveUninitialized: false
+}));
 
 router.use(bodyParser.urlencoded({     // to support URL-encoded bodies
-  extended: true
+	extended: true
 })); 
 
 
-
 //Define database tables/model
-db.user = db.connection.define('user', {
-	fbid: sequelize.BIGINT,
-	firstname: {type: sequelize.STRING, unique: true},
+let User = db.define('nofbuser', {
+	name: {type: sequelize.STRING, unique: true},
 	lastname: {type: sequelize.STRING, unique: true},
-	email: {type: sequelize.STRING, unique: true}
-})
+	email: {type: sequelize.STRING, unique: true},
+	password: sequelize.STRING
+});
 
-db.Donation = db.connection.define('donation', {
+let Donation = db.define('donation', {
 	donationamount: sequelize.DECIMAL
 })
 
-db.Kilometer = db.connection.define('kilometer', {
+let Kilometer = db.define('kilometer', {
 	kilometercount: sequelize.INTEGER
 })
 
-db.kenteken = db.connection.define('kenteken', {
+let kenteken = db.define('kenteken', {
 	kenteken: sequelize.STRING,
 	brandstofomschrijving: sequelize.STRING,
 	brandstofverbruikcombi: sequelize.DECIMAL,
-	}, {
-    timestamps: false
+}, {
+	timestamps: false
 })
 
 //Define DB structure
 
-db.user.hasMany ( db.Donation )
-db.Donation.belongsTo ( db.user )
+User.hasMany ( Donation )
+Donation.belongsTo ( User )
 
-db.user.hasMany ( db.Kilometer )
-db.Kilometer.belongsTo ( db.user )
+User.hasMany ( Kilometer )
+Kilometer.belongsTo ( User )
 
 //Sync DB
-db.connection.sync( {'force': false} ).then(
+db.sync( {'force': false} ).then(
 
 	() => { 
 		console.log ( 'Synchronized' )
@@ -63,21 +69,21 @@ db.connection.sync( {'force': false} ).then(
 //_________routes
 router.get('/calculation', function (req, res) {
 
-		res.render('calculationrdw')
+	res.render('calculationrdw')
 
 })
 
 
 router.post('/kentekencalc', function (req, res) {
-	let kenteken = req.body.kenteken
+	let Kenteken = req.body.kenteken
 	console.log(kenteken)
 
-	db.kenteken.findOne({
+	kenteken.findOne({
 		where: {
-			kenteken: kenteken
+			kenteken: Kenteken
 		}
 	}).then (car=>{
-	 	res.send({brandstofverbruik: car.brandstofverbruikcombi, brandstofsoort: car.brandstofomschrijving})
+		res.send({brandstofverbruik: car.brandstofverbruikcombi, brandstofsoort: car.brandstofomschrijving})
 	}).catch( err=>{
 		console.log("Cannot find")
 		res.send({err: err})
@@ -87,23 +93,67 @@ router.post('/kentekencalc', function (req, res) {
 
 
 router.post('/donationcalc', function (req, res) {
-		// let user = req.session.db.user
-		// console.log(user)
-
-		// user = req.session.db.user
-		// console.log("joehoe"+user)
-
-		// console.log("Donation: "+req.body.donation)
-		// console.log("Kilometer: "+req.body.kilometer)
-		db.Kilometer.create({
+	let user = req.session.user;
+	User.findOne({
+		where: {
+			id: user.id
+		}
+	}).then	( user =>{
+		user.createKilometer({
 			kilometercount: req.body.kilometer
-				// userId: user.id
-			})
-		db.Donation.create({
+		})
+		user.createDonation({
 			donationamount: req.body.donation
-				// userId: user.id
-			})
-	})			
+		})			
+	}).then( data =>{
+		console.log("donationcalc is done")
+		res.send(data)
+	})
+})	
+
+
+router.get('/totals', function (req, res) {
+	let user        = req.session.user;
+	let sumKM       = 0
+	let sumDonation = 0
+
+	Promise.all([
+		Kilometer.findAll({
+			where: {
+				nofbuserId: user.id
+			}
+		}).then(data=>{
+			let kilometers = []
+			for (var i = data.length - 1; i >= 0; i--) {
+				let totalkm= data[i].kilometercount
+				kilometers.push(totalkm)
+			}
+			sumKM = kilometers.reduce(add, 0);
+			function add(a, b) {
+				return a + b;
+			}
+			console.log("joehoe"+sumKM)
+		}),
+		Donation.findAll({
+			where: {
+				nofbuserId: user.id
+			}
+		}).then (data=>{
+			let donations = []
+			for (var i = data.length - 1; i >= 0; i--) {
+				let totaldonation= data[i].donationamount
+				donations.push(parseFloat(totaldonation))
+			}
+			sumDonation = donations.reduce(add, 0);
+			function add(a, b) {
+				return a + b;
+			}
+			console.log("joehoe"+sumDonation)
+		})
+	]).then ( ()=>{
+		res.send({sumKM, sumDonation })
+	})
+})
 
 
 //__________Export module

@@ -8,13 +8,11 @@ const sequelize  =  require('sequelize')
 const session    =  require('express-session')
 const bcrypt     =  require('bcrypt-nodejs')
 const nodesass   = 	require('node-sass')
-const db         =  require('./models/database')
-const passport   =  require('passport')
-const Strategy   =  require('passport-facebook').Strategy
-let facebook     =  require('./models/facebook')
+const db         =  new sequelize('cotree', process.env.POSTGRES_USER, process.env.POSTGRES_PASSWORD,{
+						host: 'localhost',
+						dialect: 'postgres'
+					});
 
-app.use(passport.initialize());
-app.use(passport.session());
 
 //Set views
 app.set('views', './views')
@@ -58,12 +56,16 @@ let homeRouter 		  = require( __dirname + '/routes/home' )
 let calculationRouter = require( __dirname+'/routes/calculation' )
 let donate = require( __dirname+'/routes/donate' )
 let login = require(__dirname + '/routes/login' )
+let register = require(__dirname + '/routes/register' )
+let faq = require(__dirname + '/routes/faq' )
 
 
 app.use('/', homeRouter )
 app.use('/', calculationRouter )
 app.use('/', login)
 app.use('/', donate)
+app.use('/', register)
+app.use('/', faq)
 
 
 //Set port

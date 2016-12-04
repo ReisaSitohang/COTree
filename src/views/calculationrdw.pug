@@ -49,8 +49,20 @@ html
 												br
 												h5#donationAmount
 											.col.s12
-												input#donatenowBtn.btn(type='button', value='Donate total now')
+												a#donatenowBtn.btn(href='https://www.geef.nl/externalMod.php?gd=6856&taal=NL_NL', value='Donate total now') Donate Total Now &nbsp
 												input#donatelaterBtn.btn(type='button', value='Save to your total')
+										#totalsbox.col.m11.col.s10.offset-s1
+											#totalTitle.center Total
+												.totalinfo.col.s12
+													div.col.s4.offset-s1
+														.col.s12
+															p.rechts Kilometers
+															p.rechts To Donate
+													div.col.s4.offset-s2
+														.col.s12
+															p#totalkm 0
+															p#totaltodonate 0
+
 								//- div.row#treeloader
 								//- 	div.col.m6.offset-m8.col.s10.offset-s1
 								//- 		include includes/treepreloadbar.pug										

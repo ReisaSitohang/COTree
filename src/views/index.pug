@@ -1,20 +1,32 @@
 html
 	head
 		title Calculation
-		include includes/head.pug
-		include includes/calculationscriptrdw.pug				
+		include includes/head.pug	
 	body
 		// - Login Form
 		.background 
 		.login-form
 			.overlay
 				h1 Welcome to COTree!
-				a(href="/auth/facebook")
-					img(src='/images/fb_login.png')
-				
-	
-
-
+					h2#error-message= message
+					div#login-form
+						.row
+							form.col.s12(action='/' method='post')
+								.row 
+									.input-field-col.s12
+										p.white-text  E-mail										
+										input#email.white-text(type='email' name='email' autocomplete='off' required)
+								.row
+									.input-field-col.s12
+										p.white-text  Password										
+										input#password.white-text(type='password' name='password' autocomplete='off' required secret)
+								.row
+									button.btn.waves-effect.waves-light(type='submit')
+										| Log-In &nbsp&nbsp&nbsp&nbsp
+										i.material-icons.right send
+									a.btn.waves-effect.waves-light.other(href="/register")
+										| Register
+										i.material-icons.right send
 
 
 

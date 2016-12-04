@@ -21,7 +21,7 @@ h1{
 	border-color: #4b9701;
 	border-radius: 0px 0px 30px 30px;
 	padding: 20px;
-	min-height: 450px;
+	min-height: 550px;
 	background-image: url("");
 	background-repeat: repeat-x;
 }
@@ -39,6 +39,7 @@ h1{
 #donationArea {
 	background-color: #512da8;
 	border-radius: 30px 30px 30px 30px;
+	min-height:275px;
 	padding: 20px;
 	min-height: 50%;
 	background-image: url("");
@@ -201,4 +202,59 @@ animation: AnimationName 17s ease infinite;
   50% {
     transform: scale(1);
   }
+}
+
+.register-form {
+	color: white;
+	position:absolute;
+	top:50%;
+	left:50%;
+	padding:15px;
+	-ms-transform: translateX(-50%) translateY(-50%);
+	-webkit-transform: translate(-50%,-50%);
+	transform: translate(-50%,-50%);
+    z-index: 11; /* 1px higher than the overlay layer */
+}
+
+h1.register{
+	margin-top:20px;
+	margin-bottom:0px;
+}
+
+a.other{
+	opacity: 0.5;
+}
+
+a.other:hover{
+	opacity: 1;
+}
+
+#totalsbox{
+	min-height: 160px;
+	margin-top: 30px;
+	background-color: #512da8;
+	border-radius: 30px 30px 30px 30px;
+	padding-top:10px;
+	padding-left:20px;
+	padding-right:20px;
+	padding-bottom:20px;
+}
+
+#totalTitle{
+	font-size: 25px;
+	font-family: 'Jura', sans-serif;
+	color:white;
+}
+
+.row .col div.totalinfo {
+	background-color: lightblue;
+	border-radius: 20px 20px 20px 20px;
+	padding: 20px;
+	font-family: 'Orbitron', sans-serif;
+	font-size: 20px;
+	color: black;
+}
+
+form p.rechts { 
+		text-align: right;
 }
