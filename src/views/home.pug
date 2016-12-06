@@ -13,9 +13,9 @@ html
 				div.row
 					div#homecard.card
 						div.card-content
-							h2 Your driving and donation statistics
+							h4.center Your driving and donation statistics
 							div#kms
-								h5#kmtext
+								h6#kmtext.center
 								div#slider.animated.slideOutRight
 									div#bouncer.animated.bounce
 										div#cartext
@@ -24,9 +24,12 @@ html
 											img#cloud1.animated.pulse(src='/images/cloud1.png')
 										div#car
 											img#carpic(src='/images/car2.png')
+							div.divider
+							h6#co2text
 							div.row
 							div#forest
-								h5#treetext
+								h5.center Your donations visualized:
+								h6#treetext.center
 								-	for (var x=1, y= x + 'tree'; x <=fulltree; x++) 
 										div.tahrees.treecontainer
 											div(id=y, class='tree')
