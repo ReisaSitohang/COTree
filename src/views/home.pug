@@ -13,8 +13,9 @@ html
 				div.row
 					div#homecard.card
 						div.card-content
+							h4.center Your driving and donation statistics
 							div#kms
-								h4#kmtext Helloo you have driven somewhat KM's!
+								h6#kmtext.center
 								div#slider.animated.slideOutRight
 									div#bouncer.animated.bounce
 										div#cartext
@@ -23,10 +24,13 @@ html
 											img#cloud1.animated.pulse(src='/images/cloud1.png')
 										div#car
 											img#carpic(src='/images/car2.png')
+							div.divider
+							h6#co2text
 							div.row
 							div#forest
-								h4#treetext
-								-	for (var x=1, y= x + 'tree'; x <= data.fulltree; x++) 
+								h5.center Your donations visualized:
+								h6#treetext.center
+								-	for (var x=1, y= x + 'tree'; x <=fulltree; x++) 
 										div.tahrees.treecontainer
 											div(id=y, class='tree')
 												div

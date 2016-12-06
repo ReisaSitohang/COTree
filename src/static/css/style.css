@@ -28,7 +28,8 @@ main {
   background-position: center; }
 
 #homecard {
-  margin-top: -60px; }
+  margin-top: -60px;
+  overflow: hidden; }
 
 #bouncer {
   animation-iteration-count: infinite;

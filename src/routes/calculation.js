@@ -116,6 +116,8 @@ router.get('/totals', function (req, res) {
 	let user        = req.session.user;
 	let sumKM       = 0
 	let sumDonation = 0
+	let remainder 	= ''
+	let fulltree 	= 0
 
 	Promise.all([
 		Kilometer.findAll({
@@ -148,10 +150,12 @@ router.get('/totals', function (req, res) {
 			function add(a, b) {
 				return a + b;
 			}
-			console.log("joehoe"+sumDonation)
+			remainder = ((sumDonation % 2)/2)*100 + 'px'
+			fulltree  = sumDonation/2
+			console.log("joehoe"+sumDonation + remainder + fulltree)
 		})
 	]).then ( ()=>{
-		res.send({sumKM, sumDonation })
+		res.send({sumKM, sumDonation, remainder, fulltree })
 	})
 })
 
