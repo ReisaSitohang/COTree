@@ -152,7 +152,7 @@ router.get('/totals', function (req, res) {
 			}
 			remainder = ((sumDonation % 2)/2)*100 + 'px'
 			fulltree  = sumDonation/2
-			console.log("joehoe"+sumDonation)
+			console.log("joehoe"+sumDonation + remainder + fulltree)
 		})
 	]).then ( ()=>{
 		res.send({sumKM, sumDonation, remainder, fulltree })

@@ -1,26 +1,36 @@
 script.
 	//what to do with the remainder tree
 	var remainderFunction = function() {
-		$.get('/totals', (res)=> {
-			if(res.remainder == '0px') {
+			if('#{remainder}' == '0px') {
 			console.log("no remains")
-			if (res.fulltree == 1) {
+				console.log('#fulltree')
+			if ('#{fulltree}' == 1) {
 				$('#treetext').html("Woohoo, you have a tree!")
 				}
 			else {
 				$('#treetext').html("Check out your trees!")
 				}
 			//if not 0px fill the tree up to the remainder amount and show remaindertree
-		} else if (res.remainder !== '0px') {
-			$('.remainderTree').css('height', '#{data.remainder}')
+		} else if ('#{remainder}' !== '0px') {
+			$('.remainderTree').css('height', '#{remainder}')
 			$('.remainderTree').css('visibility', 'visible')
-			if (res.fulltree < 1) {
+			if ('#fulltree' < 1) {
 				$('#treetext').html("Looks like you need to donate more to plant a full tree")
 				}
 			else {
 				$('#treetext').html("Donate more to grow your forest")
 				}	
 		}
+	}
+	var kmFunction = function () {
+		$.get('/totals', (res) => {
+			if(res.sumKM == 0) {
+				console.log("no driving history")
+				$('#kmtext').html("You have no driving record yet.")
+				}
+			else if (res.sumKM !== 0) {
+				$('#kmtext').html("You have driven " + res.sumKM + " kilometers" )
+				}
 		})
 	}
 	//what to display when no money has been donated yet
@@ -30,8 +40,9 @@ script.
 			console.log("nothing donated yet")
 			$('.nomoneytree').css('visibility', 'visible')
 			$('#treetext').html("Looks like you don't have any trees yet")
-			}
+		}
 		})
+		
 	}
 
 	//configure animate.css
@@ -49,6 +60,7 @@ script.
 		$.get('/totals', (res)=> {
 			console.log(res.sumKM)
 			console.log(res.sumDonation)
+			kmFunction()
 			if (res.sumDonation == 0) {
 			noMoneyFunction()
 				console.log("i'm broke nigga, i'm broke")
